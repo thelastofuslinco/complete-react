@@ -1,35 +1,31 @@
-import { useState } from 'react'
-import Button from './components/Button'
-import Input from './components/Input'
-import './index.css'
+import Navigation from './components/Navigation'
+import Counter from './playground/counter'
+import Form from './playground/form'
 
 const App = () => {
-  const [count, setCount] = useState(0)
-
-  const handleSubmit = (event) => {
-    event.preventDefault()
-    const { email, password } = event.target
-    console.log(email.value, password.value)
-  }
+  const template = (
+    <div>
+      <h1>Lincoln Duarte</h1>
+      <p>Age: 24</p>
+      <p>Location: Maceio</p>
+    </div>
+  )
 
   return (
-    <h1>
-      Hello, worldd {count}
-      <Button onClick={() => setCount((prevState) => prevState + 1)}>
-        add
-      </Button>
-      <form onSubmit={handleSubmit}>
-        <label>
-          Email:
-          <Input name="email" placeholder="Email" />
-        </label>
-        <label>
-          Password:
-          <Input name="password" placeholder="password" />
-        </label>
-        <Button type="submit">submit</Button>
-      </form>
-    </h1>
+    <div>
+      {template} <Navigation />
+      <Form
+        onSubmit={async (value) => {
+          const response = await new Promise((resolve, reject) =>
+            setTimeout(() => {
+              resolve('aaaa')
+            }, 2000)
+          )
+          console.log(response)
+        }}
+      />
+      <Counter message="simple message" />
+    </div>
   )
 }
 
