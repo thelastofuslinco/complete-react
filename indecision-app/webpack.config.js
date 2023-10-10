@@ -7,12 +7,14 @@ module.exports = {
   devtool: 'inline-source-map',
   devServer: {
     static: path.resolve(__dirname, 'dist'),
-    port: 3000
+    port: 3000,
+    historyApiFallback: true
   },
   entry: {
     index: './src/index.js'
   },
   output: {
+    publicPath: '/',
     filename: '[name].bundle.js',
     path: path.resolve(__dirname, 'dist'),
     clean: true

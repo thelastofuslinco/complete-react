@@ -1,30 +1,30 @@
-import Navigation from './components/Navigation'
-import Counter from './playground/counter'
-import Form from './playground/form'
+import Route from './components/Route'
+import Sidebar from './components/Sidebar'
+import Home from './playground/Home'
+import Playground from './playground/Playground'
 
 const App = () => {
-  const template = (
-    <div>
-      <h1>Lincoln Duarte</h1>
-      <p>Age: 24</p>
-      <p>Location: Maceio</p>
-    </div>
-  )
+  const links = [
+    { label: 'Home', to: '/' },
+    { label: 'Playground', to: '/playground' }
+  ]
 
   return (
-    <div>
-      {template} <Navigation />
-      <Form
-        onSubmit={async (value) => {
-          const response = await new Promise((resolve, reject) =>
-            setTimeout(() => {
-              resolve('aaaa')
-            }, 2000)
-          )
-          console.log(response)
-        }}
-      />
-      <Counter message="simple message" />
+    <div
+      style={{
+        display: 'grid',
+        gridTemplateColumns: '1fr 4fr',
+        gap: '1rem',
+        paddingLeft: '1rem'
+      }}
+    >
+      <Sidebar links={links} />
+      <Route path="/">
+        <Home />
+      </Route>
+      <Route path="/playground">
+        <Playground />
+      </Route>
     </div>
   )
 }

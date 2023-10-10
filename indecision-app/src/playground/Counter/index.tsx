@@ -1,10 +1,10 @@
 import React from 'react'
 
-interface Props {
+interface State {
   count: number
 }
 
-class Counter extends React.Component<{ message?: string }, Props> {
+class Counter extends React.Component<{ message?: string }, State> {
   constructor(props) {
     super(props)
     this.addOne = this.addOne.bind(this)
@@ -35,8 +35,6 @@ class Counter extends React.Component<{ message?: string }, Props> {
   }
 
   render() {
-    console.log(this.props)
-
     return (
       <div>
         <p>Counter {this.state.count}</p>
