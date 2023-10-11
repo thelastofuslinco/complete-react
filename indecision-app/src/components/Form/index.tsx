@@ -33,8 +33,9 @@ class Form extends React.Component<Props, State> {
   render(): React.ReactNode {
     return (
       <div>
-        <form onSubmit={this.handleSubmit}>
+        <form style={{ display: 'flex' }} onSubmit={this.handleSubmit}>
           <input
+            style={{ padding: '1rem', flex: 1, fontSize: '1rem' }}
             name="username"
             value={this.state.username}
             onChange={(event) =>
@@ -45,7 +46,11 @@ class Form extends React.Component<Props, State> {
             }
           />
 
-          <button disabled={this.state.loading} type="submit">
+          <button
+            style={{ padding: '0.5rem 1rem', fontSize: '1rem' }}
+            disabled={this.state.loading}
+            type="submit"
+          >
             send
           </button>
         </form>

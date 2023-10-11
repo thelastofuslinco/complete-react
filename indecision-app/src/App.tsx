@@ -1,7 +1,7 @@
 import Route from './components/Route'
 import Sidebar from './components/Sidebar'
-import Home from './playground/Home'
-import Playground from './playground/Playground'
+import Home from './pages/Home'
+import Playground from './pages/Playground'
 
 const App = () => {
   const links = [

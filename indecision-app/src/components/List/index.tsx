@@ -8,7 +8,15 @@ interface Props {
 class List extends React.Component<Props> {
   render(): React.ReactNode {
     return (
-      <div style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem' }}>
+      <div
+        style={{
+          display: 'flex',
+          flexDirection: 'column',
+          gap: '0.5rem',
+          overflow: 'auto',
+          flex: 1
+        }}
+      >
         {this.props.options.map((option, index) => (
           <span
             key={option + index}

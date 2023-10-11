@@ -1,8 +1,6 @@
 import React from 'react'
-import Template from '../Template'
-import Counter from '../Counter'
-import Form from '../Form'
-import List from '../List'
+import Template from '../../components/Template'
+import Counter from '../../components/Counter'
 
 interface Props {}
 
