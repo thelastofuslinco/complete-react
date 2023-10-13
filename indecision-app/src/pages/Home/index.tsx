@@ -1,9 +1,8 @@
 import React from 'react'
 import Header from '../../components/Header'
-import List from '../../components/List'
+import Options from '../../components/Options'
 import Form from '../../components/Form'
 import { HomeContainer } from './styles'
-import { Person } from '../../playground/es6_classes'
 
 interface Props {}
 
@@ -33,12 +32,12 @@ class Home extends React.Component<Props, State> {
   }
 
   render() {
-    const person = new Person('Lincoln', 24)
-    console.log(person.get_description)
-
     return (
       <HomeContainer>
-        <Header />
+        <Header
+          title="Indecision app"
+          subtitle="Put your life in the hands of a computer"
+        />
         <button
           disabled={!this.state.options.length}
           onClick={this.handleMakeDecision}
@@ -46,7 +45,10 @@ class Home extends React.Component<Props, State> {
           What should i do?
         </button>
 
-        <List value={this.state.selectedOption} options={this.state.options} />
+        <Options
+          value={this.state.selectedOption}
+          options={this.state.options}
+        />
         <Form
           onSubmit={async (value) => {
             const response = await new Promise<{

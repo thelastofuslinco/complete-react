@@ -1,5 +1,4 @@
 import React from 'react'
-import Template from '../../components/Template'
 import Counter from '../../components/Counter'
 
 interface Props {}
@@ -22,7 +21,6 @@ class Playground extends React.Component<Props, State> {
   render() {
     return (
       <div style={{ padding: '1rem' }}>
-        <Template />
         <Counter message="simple message" />
       </div>
     )

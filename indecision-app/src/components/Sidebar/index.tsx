@@ -4,11 +4,16 @@ import { SidebarContainer } from './style'
 const Sidebar = ({ links }) => {
   return (
     <SidebarContainer>
-      {links.map((link) => (
-        <Link to={link.to} key={link.label}>
-          {link.label}
-        </Link>
-      ))}
+      {links.map((link) => {
+        const capitalizedLabel =
+          link.label.charAt(0).toUpperCase() + link.label.slice(1)
+
+        return (
+          <Link to={link.to} key={link.label}>
+            {capitalizedLabel}
+          </Link>
+        )
+      })}
     </SidebarContainer>
   )
 }

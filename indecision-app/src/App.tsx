@@ -5,8 +5,8 @@ import Playground from './pages/Playground'
 
 const App = () => {
   const links = [
-    { label: 'Home', to: '/' },
-    { label: 'Playground', to: '/playground' }
+    { label: 'home', to: '/' },
+    { label: 'playground', to: '/playground' }
   ]
 
   return (
