@@ -1,36 +1,19 @@
-import React from 'react'
+import { OptionItem, OptionsContainer } from './styles'
 
 interface Props {
   options: Array<string>
   value: number
 }
 
-const Options = (props: Props) => {
+const Options = ({ options, value }: Props) => {
   return (
-    <div
-      style={{
-        display: 'flex',
-        flexDirection: 'column',
-        gap: '0.5rem',
-        overflow: 'auto',
-        flex: 1
-      }}
-    >
-      {props.options.map((option, index) => (
-        <span
-          key={option + index}
-          style={{
-            padding: '0.5rem',
-            backgroundColor: props.value === index ? '#b3b3b3' : '#d6d6d6',
-            borderRadius: '0.5rem',
-            maxWidth: 400,
-            color: props.value === index && 'blue'
-          }}
-        >
+    <OptionsContainer>
+      {options.map((option, index) => (
+        <OptionItem key={option + index} $index={index} $value={value}>
           Option {index}: {option}
-        </span>
+        </OptionItem>
       ))}
-    </div>
+    </OptionsContainer>
   )
 }
 
