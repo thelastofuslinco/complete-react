@@ -29,9 +29,9 @@ class Counter extends React.Component<{ message?: string }, State> {
   }
 
   resetCount() {
-    this.setState(() => ({
+    this.setState({
       count: 0
-    }))
+    })
   }
 
   render() {

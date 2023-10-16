@@ -1,15 +1,13 @@
 import styled from 'styled-components'
 
 export const OptionItemContainer = styled.span<{
-  $value: number
-  $index: number
+  $selected: boolean
 }>`
   padding: 0.5rem;
-  background-color: ${({ $value, $index }) =>
-    $value === $index ? '#b3b3b3' : '#d6d6d6'};
+  background-color: ${({ $selected }) => ($selected ? '#b3b3b3' : '#d6d6d6')};
   border-radius: 0.5rem;
   max-width: 400px;
-  color: ${({ $value, $index }) => $value === $index && 'blue'};
+  color: ${({ $selected }) => $selected && 'blue'};
 
   .icon {
     animation: rotating 1s linear infinite;

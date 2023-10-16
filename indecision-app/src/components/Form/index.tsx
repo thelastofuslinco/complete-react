@@ -21,15 +21,15 @@ class Form extends React.Component<Props, State> {
   handleSubmit = (event) => {
     event.preventDefault()
     const { text } = event.target
-    this.setState((prevState) => ({ ...prevState, loading: true }))
+    this.setState({ loading: true })
 
     this.props
       .onSubmit(text.value.trim())
       .then(() => {
         text.value = ''
-        this.setState(() => ({ loading: false, error: null }))
+        this.setState({ loading: false, error: null })
       })
-      .catch((error: Error) => this.setState(() => ({ loading: false, error })))
+      .catch((error: Error) => this.setState({ loading: false, error }))
   }
 
   render(): React.ReactNode {

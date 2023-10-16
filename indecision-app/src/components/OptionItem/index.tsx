@@ -7,10 +7,9 @@ interface State {
 }
 
 interface Props {
-  option: string
-  index: number
-  value: number
-  onDelete: (value: string) => Promise<void>
+  option: { id: string; value: string }
+  value: string
+  onDelete: (id: string) => Promise<void>
 }
 
 class OptionItem extends React.Component<Props, State> {
@@ -23,19 +22,21 @@ class OptionItem extends React.Component<Props, State> {
     }
   }
 
-  handleDelete = (option) => {
+  handleDelete = (id) => {
     this.setState(() => ({ loading: true }))
-    this.props.onDelete(option).finally(() => {
+    this.props.onDelete(id).finally(() => {
       this.setState(() => ({ loading: false }))
     })
   }
 
   render(): React.ReactNode {
     return (
-      <OptionItemContainer $index={this.props.index} $value={this.props.value}>
-        Option {this.props.index}: {this.props.option}
+      <OptionItemContainer
+        $selected={this.props.option.id === this.props.value}
+      >
+        Option {this.props.option.id}: {this.props.option.value}
         <button
-          onClick={() => this.handleDelete(this.props.option)}
+          onClick={() => this.handleDelete(this.props.option.id)}
           disabled={this.state.loading}
         >
           {this.state.loading ? <GoSync className="icon" /> : <GoXCircle />}

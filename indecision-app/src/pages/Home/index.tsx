@@ -3,12 +3,13 @@ import Header from '../../components/Header'
 import Options from '../../components/Options'
 import Form from '../../components/Form'
 import { HomeContainer } from './styles'
+import { v4 } from 'uuid'
 
 interface Props {}
 
 interface State {
-  options: Array<string>
-  selectedOption: number
+  options: Array<{ id: string; value: string }>
+  selectedOption: string
 }
 
 class Home extends React.Component<Props, State> {
@@ -16,7 +17,7 @@ class Home extends React.Component<Props, State> {
     super(props)
     this.handleMakeDecision = this.handleMakeDecision.bind(this)
     this.handleAddOption = this.handleAddOption.bind(this)
-
+    this.handleDeleteOption = this.handleDeleteOption.bind(this)
     this.state = {
       options: [],
       selectedOption: null
@@ -24,24 +25,26 @@ class Home extends React.Component<Props, State> {
   }
 
   handleMakeDecision() {
-    const randomNum = Math.random() * this.state.options.length
+    const randomNum = Math.floor(
+      Math.random() * this.state.options.length
+    ).toString()
 
-    this.setState((prevValue) => ({
-      ...prevValue,
-      selectedOption: Math.floor(randomNum)
+    this.setState((prevState) => ({
+      selectedOption: prevState.options[randomNum].id
     }))
   }
 
-  async handleDeleteOption(option) {
-    const response = await new Promise<{
-      username: string
-    }>((resolve) =>
+  async handleDeleteOption(id: string) {
+    const response_id = await new Promise<string>((resolve) =>
       setTimeout(() => {
-        resolve(option)
+        resolve(id)
       }, 1500)
     )
+    console.log(response_id)
 
-    console.log(response)
+    this.setState((prevValue) => ({
+      options: prevValue.options.filter((option) => option.id !== response_id)
+    }))
   }
 
   async handleAddOption(value: string) {
@@ -55,9 +58,18 @@ class Home extends React.Component<Props, State> {
     )
 
     this.setState((prevValue) => ({
-      ...prevValue,
-      options: [...prevValue.options, response]
+      options: [
+        ...prevValue.options,
+        {
+          id: v4(),
+          value: response
+        }
+      ]
     }))
+  }
+
+  componentDidUpdate(): void {
+    console.log(this.state)
   }
 
   render() {

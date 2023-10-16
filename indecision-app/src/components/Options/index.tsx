@@ -1,23 +1,19 @@
 import { OptionsContainer } from './styles'
 import OptionItem from '../OptionItem'
 
-interface State {
-  loading: boolean
-}
 interface Props {
-  options: Array<string>
-  value: number
-  onDelete: (value: string) => Promise<void>
+  options: Array<{ id: string; value: string }>
+  value: string
+  onDelete: (id: string) => Promise<void>
 }
 
 const Options = ({ options, value, onDelete }: Props) => {
   return (
     <OptionsContainer>
-      {options.map((option, index) => (
+      {options.map((option) => (
         <OptionItem
-          key={option + index}
+          key={option.id}
           option={option}
-          index={index}
           value={value}
           onDelete={onDelete}
         />
