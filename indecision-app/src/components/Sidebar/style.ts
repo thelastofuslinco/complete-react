@@ -1,6 +1,6 @@
 import styled from 'styled-components'
 
-export const SidebarContainer = styled.div`
+export const SidebarContainer = styled.section`
   position: sticky;
   top: 0;
   display: flex;

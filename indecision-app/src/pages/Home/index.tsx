@@ -15,6 +15,7 @@ class Home extends React.Component<Props, State> {
   constructor(props) {
     super(props)
     this.handleMakeDecision = this.handleMakeDecision.bind(this)
+    this.handleAddOption = this.handleAddOption.bind(this)
 
     this.state = {
       options: [],
@@ -31,6 +32,34 @@ class Home extends React.Component<Props, State> {
     }))
   }
 
+  async handleDeleteOption(option) {
+    const response = await new Promise<{
+      username: string
+    }>((resolve) =>
+      setTimeout(() => {
+        resolve(option)
+      }, 1500)
+    )
+
+    console.log(response)
+  }
+
+  async handleAddOption(value: string) {
+    const response = await new Promise<string>((resolve, reject) =>
+      setTimeout(() => {
+        if (value === '') {
+          reject(new Error('Write some message'))
+        }
+        resolve(value)
+      })
+    )
+
+    this.setState((prevValue) => ({
+      ...prevValue,
+      options: [...prevValue.options, response]
+    }))
+  }
+
   render() {
     return (
       <HomeContainer>
@@ -44,27 +73,12 @@ class Home extends React.Component<Props, State> {
         >
           What should i do?
         </button>
-
         <Options
+          onDelete={this.handleDeleteOption}
           value={this.state.selectedOption}
           options={this.state.options}
         />
-        <Form
-          onSubmit={async (value) => {
-            const response = await new Promise<{
-              username: string
-            }>((resolve) =>
-              setTimeout(() => {
-                resolve(value)
-              })
-            )
-
-            this.setState((prevValue) => ({
-              ...prevValue,
-              options: [...prevValue.options, response.username]
-            }))
-          }}
-        />
+        <Form onSubmit={this.handleAddOption} />
       </HomeContainer>
     )
   }

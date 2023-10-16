@@ -1,60 +1,47 @@
 import React from 'react'
+import { FormContainer } from './styles'
 
 interface State {
-  username: string
   loading: boolean
+  error: Error
 }
-
 interface Props {
-  onSubmit: (value: { username: string }) => Promise<void>
+  onSubmit: (value: string) => Promise<void>
 }
 
 class Form extends React.Component<Props, State> {
   constructor(props) {
     super(props)
-    this.handleSubmit = this.handleSubmit.bind(this)
 
     this.state = {
-      username: '',
-      loading: false
+      loading: false,
+      error: null
     }
   }
-
-  handleSubmit(event) {
+  handleSubmit = (event) => {
     event.preventDefault()
-    const { username } = event.target
-    this.setState((prevValue) => ({ ...prevValue, loading: true }))
+    const { text } = event.target
+    this.setState((prevState) => ({ ...prevState, loading: true }))
 
-    this.props.onSubmit({ username: username.value }).finally(() => {
-      this.setState(() => ({ username: '', loading: false }))
-    })
+    this.props
+      .onSubmit(text.value.trim())
+      .then(() => {
+        text.value = ''
+        this.setState(() => ({ loading: false, error: null }))
+      })
+      .catch((error: Error) => this.setState(() => ({ loading: false, error })))
   }
 
   render(): React.ReactNode {
     return (
-      <div>
-        <form style={{ display: 'flex' }} onSubmit={this.handleSubmit}>
-          <input
-            style={{ padding: '1rem', flex: 1, fontSize: '1rem' }}
-            name="username"
-            value={this.state.username}
-            onChange={(event) =>
-              this.setState((prevValue) => ({
-                ...prevValue,
-                username: event.target.value
-              }))
-            }
-          />
-
-          <button
-            style={{ padding: '0.5rem 1rem', fontSize: '1rem' }}
-            disabled={this.state.loading}
-            type="submit"
-          >
-            send
-          </button>
-        </form>
-      </div>
+      <FormContainer
+        onSubmit={this.handleSubmit}
+        $error={!!this.state.error?.message}
+      >
+        {this.state.error?.message && <span>{this.state.error?.message}</span>}
+        <input name="text" />
+        <button type="submit">send</button>
+      </FormContainer>
     )
   }
 }
