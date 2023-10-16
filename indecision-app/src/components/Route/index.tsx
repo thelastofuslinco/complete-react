@@ -1,16 +1,21 @@
-import useNavigation from '../../hooks/useNavigation'
-
+import { NavigationContext } from '../../context/navigation'
+import React from 'react'
 interface Props {
   path: string
   children: React.ReactNode
 }
 
-const Route = ({ path, children }: Props) => {
-  const { navigationPath } = useNavigation()
+class Route extends React.Component<Props> {
+  static contextType = NavigationContext
+  declare context: React.ContextType<typeof NavigationContext>
 
-  if (path === navigationPath) return children
+  render() {
+    const { navigationPath } = this.context
 
-  return null
+    if (this.props.path === navigationPath) return this.props.children
+
+    return null
+  }
 }
 
 export default Route

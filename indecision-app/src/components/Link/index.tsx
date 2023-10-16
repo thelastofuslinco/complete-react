@@ -1,24 +1,37 @@
-import useNavigation from '../../hooks/useNavigation'
+import React from 'react'
 import { LinkContainer } from './styles'
+import { NavigationContext } from '../../context/navigation'
 
-const Link = ({ to, children }) => {
-  const { navigate, navigationPath } = useNavigation()
-
-  const handleClick = (event) => {
-    if (event.metaKey || event.ctrlKey) return
-    event.preventDefault()
-    navigate(to)
+interface Props {
+  to: string
+  children: React.ReactNode
+}
+class Link extends React.Component<Props> {
+  constructor(props) {
+    super(props)
+    this.handleClick = this.handleClick.bind(this)
   }
 
-  return (
-    <LinkContainer
-      $location={navigationPath === to}
-      onClick={handleClick}
-      href={to}
-    >
-      {children}
-    </LinkContainer>
-  )
+  static contextType = NavigationContext
+  declare context: React.ContextType<typeof NavigationContext>
+
+  handleClick = (event) => {
+    if (event.metaKey || event.ctrlKey) return
+    event.preventDefault()
+    this.context.navigate(this.props.to)
+  }
+
+  render() {
+    return (
+      <LinkContainer
+        $location={this.context.navigationPath === this.props.to}
+        onClick={this.handleClick}
+        href={this.props.to}
+      >
+        {this.props.children}
+      </LinkContainer>
+    )
+  }
 }
 
 export default Link

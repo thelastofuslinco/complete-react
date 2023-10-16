@@ -15,7 +15,6 @@ class NavigationProvider extends React.Component<Props, State> {
   constructor(props) {
     super(props)
     this.navigate = this.navigate.bind(this)
-
     this.state = {
       navigationPath: window.location.pathname
     }
@@ -35,7 +34,6 @@ class NavigationProvider extends React.Component<Props, State> {
 
   navigate = (to) => {
     window.history.pushState({}, '', to)
-
     this.setState({ navigationPath: to })
   }
 
