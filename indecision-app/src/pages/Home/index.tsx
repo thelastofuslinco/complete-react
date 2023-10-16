@@ -25,9 +25,7 @@ class Home extends React.Component<Props, State> {
   }
 
   handleMakeDecision() {
-    const randomNum = Math.floor(
-      Math.random() * this.state.options.length
-    ).toString()
+    const randomNum = Math.floor(Math.random() * this.state.options.length)
 
     this.setState((prevState) => ({
       selectedOption: prevState.options[randomNum].id
@@ -40,7 +38,6 @@ class Home extends React.Component<Props, State> {
         resolve(id)
       }, 1500)
     )
-    console.log(response_id)
 
     this.setState((prevValue) => ({
       options: prevValue.options.filter((option) => option.id !== response_id)
@@ -66,10 +63,6 @@ class Home extends React.Component<Props, State> {
         }
       ]
     }))
-  }
-
-  componentDidUpdate(): void {
-    console.log(this.state)
   }
 
   render() {

@@ -1,16 +1,29 @@
-import { useEffect, useState, createContext, useMemo } from 'react'
+import React from 'react'
 
-const NavigationContext = createContext({
+const NavigationContext = React.createContext({
   navigationPath: '',
   navigate: (value: string) => {}
 })
 
-const NavigationProvider = ({ children }) => {
-  const [navigationPath, setNavigationPath] = useState(window.location.pathname)
+interface State {
+  navigationPath: string
+}
+interface Props {
+  children: React.ReactNode
+}
+class NavigationProvider extends React.Component<Props, State> {
+  constructor(props) {
+    super(props)
+    this.navigate = this.navigate.bind(this)
 
-  useEffect(() => {
+    this.state = {
+      navigationPath: window.location.pathname
+    }
+  }
+
+  componentDidMount() {
     const handle = () => {
-      setNavigationPath(window.location.pathname)
+      this.setState({ navigationPath: window.location.pathname })
     }
 
     window.addEventListener('popstate', handle)
@@ -18,20 +31,26 @@ const NavigationProvider = ({ children }) => {
     return () => {
       window.removeEventListener('popstate', handle)
     }
-  }, [])
-
-  const navigate = (to) => {
-    window.history.pushState({}, '', to)
-    setNavigationPath(to)
   }
 
-  const value = useMemo(() => ({ navigationPath, navigate }), [navigationPath])
+  navigate = (to) => {
+    window.history.pushState({}, '', to)
 
-  return (
-    <NavigationContext.Provider value={value}>
-      {children}
-    </NavigationContext.Provider>
-  )
+    this.setState({ navigationPath: to })
+  }
+
+  render(): React.ReactNode {
+    return (
+      <NavigationContext.Provider
+        value={{
+          navigationPath: this.state.navigationPath,
+          navigate: this.navigate
+        }}
+      >
+        {this.props.children}
+      </NavigationContext.Provider>
+    )
+  }
 }
 
-export { NavigationProvider, NavigationContext as default }
+export { NavigationContext, NavigationProvider as default }
