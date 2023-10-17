@@ -13,18 +13,12 @@ interface State {
 }
 
 class Home extends React.Component<Props, State> {
-  constructor(props) {
-    super(props)
-    this.handleMakeDecision = this.handleMakeDecision.bind(this)
-    this.handleAddOption = this.handleAddOption.bind(this)
-    this.handleDeleteOption = this.handleDeleteOption.bind(this)
-    this.state = {
-      options: [],
-      selectedOption: null
-    }
+  state = {
+    options: [],
+    selectedOption: null
   }
 
-  handleMakeDecision() {
+  handleMakeDecision = () => {
     const randomNum = Math.floor(Math.random() * this.state.options.length)
 
     this.setState((prevState) => ({
@@ -32,7 +26,7 @@ class Home extends React.Component<Props, State> {
     }))
   }
 
-  async handleDeleteOption(id: string) {
+  handleDeleteOption = async (id: string) => {
     const response_id = await new Promise<string>((resolve) =>
       setTimeout(() => {
         resolve(id)
@@ -44,7 +38,7 @@ class Home extends React.Component<Props, State> {
     }))
   }
 
-  async handleAddOption(value: string) {
+  handleAddOption = async (value: string) => {
     const response = await new Promise<string>((resolve, reject) =>
       setTimeout(() => {
         if (value === '') {

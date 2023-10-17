@@ -5,30 +5,23 @@ interface State {
 }
 
 class Counter extends React.Component<{ message?: string }, State> {
-  constructor(props) {
-    super(props)
-    this.addOne = this.addOne.bind(this)
-    this.removeOne = this.removeOne.bind(this)
-    this.resetCount = this.resetCount.bind(this)
-
-    this.state = {
-      count: 0
-    }
+  state = {
+    count: 0
   }
 
-  addOne() {
+  addOne = () => {
     this.setState((prevValue) => ({
       count: prevValue.count + 1
     }))
   }
 
-  removeOne() {
+  removeOne = () => {
     this.setState((prevValue) => ({
       count: prevValue.count - 1
     }))
   }
 
-  resetCount() {
+  resetCount = () => {
     this.setState({
       count: 0
     })

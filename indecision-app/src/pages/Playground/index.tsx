@@ -9,15 +9,6 @@ interface State {
 }
 
 class Playground extends React.Component<Props, State> {
-  constructor(params) {
-    super(params)
-
-    this.state = {
-      options: [],
-      selectedOption: null
-    }
-  }
-
   render() {
     return (
       <div style={{ padding: '1rem' }}>

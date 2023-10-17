@@ -13,13 +13,8 @@ interface Props {
 }
 
 class OptionItem extends React.Component<Props, State> {
-  constructor(props) {
-    super(props)
-    this.handleDelete = this.handleDelete.bind(this)
-
-    this.state = {
-      loading: false
-    }
+  state = {
+    loading: false
   }
 
   handleDelete = (id) => {

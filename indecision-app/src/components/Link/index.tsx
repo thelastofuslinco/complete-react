@@ -7,11 +7,6 @@ interface Props {
   children: React.ReactNode
 }
 class Link extends React.Component<Props> {
-  constructor(props) {
-    super(props)
-    this.handleClick = this.handleClick.bind(this)
-  }
-
   static contextType = NavigationContext
   declare context: React.ContextType<typeof NavigationContext>
 

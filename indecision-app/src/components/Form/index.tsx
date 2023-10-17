@@ -10,14 +10,11 @@ interface Props {
 }
 
 class Form extends React.Component<Props, State> {
-  constructor(props) {
-    super(props)
-
-    this.state = {
-      loading: false,
-      error: null
-    }
+  state = {
+    loading: false,
+    error: null
   }
+
   handleSubmit = (event) => {
     event.preventDefault()
     const { text } = event.target
