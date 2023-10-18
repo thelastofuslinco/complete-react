@@ -16,7 +16,7 @@ class Playground extends React.Component<Props, State> {
 
   render() {
     return (
-      <div style={{ padding: '2rem 1rem' }}>
+      <div className="playgroundContainer">
         <button onClick={() => this.setState({ open: true })}>
           Open modal
         </button>

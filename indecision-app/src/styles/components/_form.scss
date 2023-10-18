@@ -5,19 +5,18 @@
   span {
     position: absolute;
     bottom: 100%;
-    opacity: 0.5;
-    color: $off-red;
+    color: $red;
   }
 
   input {
     padding: $sm-size $m-size;
     flex: 1;
     font-size: $m-size;
-    border: 1px solid black;
+    border: 1px solid $off-black;
     outline: none;
 
     &.error {
-      border-color: $off-red;
+      border-color: $red;
     }
   }
 

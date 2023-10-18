@@ -30,7 +30,7 @@ class OptionItem extends React.Component<Props, State> {
           this.props.option.id === this.props.value && 'active'
         }`}
       >
-        Option {this.props.option.id}: {this.props.option.value}
+        Option: {this.props.option.value}
         <button
           onClick={() => this.handleDelete(this.props.option.id)}
           disabled={this.state.loading}

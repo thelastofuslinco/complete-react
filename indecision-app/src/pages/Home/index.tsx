@@ -65,17 +65,25 @@ class Home extends React.Component<Props, State> {
           title="Indecision app"
           subtitle="Put your life in the hands of a computer"
         />
+
         <button
+          className="big_button"
           disabled={!this.state.options.length}
           onClick={this.handleMakeDecision}
         >
           What should i do?
         </button>
-        <Options
-          onDelete={this.handleDeleteOption}
-          value={this.state.selectedOption}
-          options={this.state.options}
-        />
+        <div className="widget">
+          <div className="widget_header">
+            <span>Your options</span>
+            <button className="link_button">Remove all</button>
+          </div>
+          <Options
+            onDelete={this.handleDeleteOption}
+            value={this.state.selectedOption}
+            options={this.state.options}
+          />
+        </div>
         <Form onSubmit={this.handleAddOption} />
       </div>
     )

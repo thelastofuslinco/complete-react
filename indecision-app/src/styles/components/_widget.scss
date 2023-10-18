@@ -1,0 +1,17 @@
+.widget {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  overflow: auto;
+  width: 25rem;
+  margin: 0 auto;
+  border-radius: $sm-size;
+}
+
+.widget_header {
+  color: $off-white;
+  background-color: $blue;
+  padding: $m-size;
+  display: flex;
+  justify-content: space-between;
+}

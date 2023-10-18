@@ -1,0 +1,39 @@
+.big_button {
+  background-color: $purple;
+  border: none;
+  border-radius: $sm-size;
+  box-shadow: 0 9px darken($color: $purple, $amount: 10);
+  width: 25rem;
+  padding: $m-size;
+  margin: 0 auto;
+  font-weight: bold;
+  color: #ffffff;
+  font-size: $l-size;
+
+  &:not(:disabled) {
+    &:hover {
+      background-color: darken($color: $purple, $amount: 2);
+    }
+
+    &:active {
+      box-shadow: 0 5px darken($color: $purple, $amount: 20);
+      transform: translateY(4px);
+    }
+  }
+}
+
+.link_button {
+  background: none;
+  border: none;
+  color: $off-white;
+
+  &:not(:disabled) {
+    &:hover {
+      color: darken($color: $off-white, $amount: 2);
+    }
+
+    &:active {
+      transform: translateY(1px);
+    }
+  }
+}
