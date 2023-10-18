@@ -1,5 +1,3 @@
-import { HeaderContainer } from './styles'
-
 interface Props {
   title: string
   subtitle: string
@@ -7,10 +5,10 @@ interface Props {
 
 const Header = ({ title, subtitle }: Props) => {
   return (
-    <HeaderContainer>
+    <header className="header_container">
       <h1>{title}</h1>
       <span>{subtitle}</span>
-    </HeaderContainer>
+    </header>
   )
 }
 

@@ -10,14 +10,7 @@ const App = () => {
   ]
 
   return (
-    <div
-      style={{
-        display: 'grid',
-        gridTemplateColumns: '1fr 4fr',
-        gap: '1rem',
-        paddingLeft: '1rem'
-      }}
-    >
+    <>
       <Sidebar links={links} />
       <Route path="/">
         <Home />
@@ -25,7 +18,7 @@ const App = () => {
       <Route path="/playground">
         <Playground />
       </Route>
-    </div>
+    </>
   )
 }
 

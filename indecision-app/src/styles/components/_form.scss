@@ -1,6 +1,4 @@
-import styled from 'styled-components'
-
-export const FormContainer = styled.form<{ $error: boolean }>`
+.form_container {
   display: flex;
   position: relative;
 
@@ -15,12 +13,16 @@ export const FormContainer = styled.form<{ $error: boolean }>`
     padding: 0.5rem 1rem;
     flex: 1;
     font-size: 1rem;
-    border: 1px solid ${({ $error }) => ($error ? 'red' : 'black')};
+    border: 1px solid black;
     outline: none;
+
+    &.error {
+      border-color: red;
+    }
   }
 
   button {
     padding: 0.5rem 1rem;
     font-size: 1rem;
   }
-`
+}

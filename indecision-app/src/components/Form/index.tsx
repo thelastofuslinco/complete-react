@@ -1,5 +1,4 @@
 import React from 'react'
-import { FormContainer } from './styles'
 
 interface State {
   loading: boolean
@@ -31,14 +30,11 @@ class Form extends React.Component<Props, State> {
 
   render(): React.ReactNode {
     return (
-      <FormContainer
-        onSubmit={this.handleSubmit}
-        $error={!!this.state.error?.message}
-      >
+      <form onSubmit={this.handleSubmit} className={'form_container'}>
         {this.state.error?.message && <span>{this.state.error?.message}</span>}
-        <input name="text" />
+        <input name="text" className={!!this.state.error?.message && 'error'} />
         <button type="submit">send</button>
-      </FormContainer>
+      </form>
     )
   }
 }

@@ -1,5 +1,4 @@
 import React from 'react'
-import { LinkContainer } from './styles'
 import { NavigationContext } from '../../context/navigation'
 
 interface Props {
@@ -18,13 +17,15 @@ class Link extends React.Component<Props> {
 
   render() {
     return (
-      <LinkContainer
-        $location={this.context.navigationPath === this.props.to}
+      <a
+        className={`link_container ${
+          this.context.navigationPath === this.props.to && 'active'
+        }`}
         onClick={this.handleClick}
         href={this.props.to}
       >
         {this.props.children}
-      </LinkContainer>
+      </a>
     )
   }
 }

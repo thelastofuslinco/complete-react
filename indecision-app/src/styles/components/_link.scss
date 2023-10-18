@@ -1,0 +1,14 @@
+.link_container {
+  color: blue;
+  padding-left: 0.5rem;
+
+  &:hover {
+    font-weight: bold;
+  }
+
+  &.active {
+    font-weight: bold;
+    border-bottom: 1px solid blue;
+    padding-left: 0.5rem;
+  }
+}
