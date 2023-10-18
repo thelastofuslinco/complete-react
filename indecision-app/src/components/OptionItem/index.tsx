@@ -1,5 +1,4 @@
 import React from 'react'
-import { OptionItemContainer } from './styles'
 import { GoSync, GoXCircle } from 'react-icons/go'
 
 interface State {
@@ -26,8 +25,10 @@ class OptionItem extends React.Component<Props, State> {
 
   render(): React.ReactNode {
     return (
-      <OptionItemContainer
-        $selected={this.props.option.id === this.props.value}
+      <span
+        className={`optionItemContainer ${
+          this.props.option.id === this.props.value && 'active'
+        }`}
       >
         Option {this.props.option.id}: {this.props.option.value}
         <button
@@ -36,7 +37,7 @@ class OptionItem extends React.Component<Props, State> {
         >
           {this.state.loading ? <GoSync className="icon" /> : <GoXCircle />}
         </button>
-      </OptionItemContainer>
+      </span>
     )
   }
 }

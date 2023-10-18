@@ -1,4 +1,3 @@
-import { OptionsContainer } from './styles'
 import OptionItem from '../OptionItem'
 
 interface Props {
@@ -9,7 +8,7 @@ interface Props {
 
 const Options = ({ options, value, onDelete }: Props) => {
   return (
-    <OptionsContainer>
+    <div className="optionsContainer">
       {options.map((option) => (
         <OptionItem
           key={option.id}
@@ -18,7 +17,7 @@ const Options = ({ options, value, onDelete }: Props) => {
           onDelete={onDelete}
         />
       ))}
-    </OptionsContainer>
+    </div>
   )
 }
 

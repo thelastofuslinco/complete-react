@@ -1,13 +1,13 @@
-import styled from 'styled-components'
-
-export const OptionItemContainer = styled.span<{
-  $selected: boolean
-}>`
+.optionItemContainer {
   padding: 0.5rem;
-  background-color: ${({ $selected }) => ($selected ? '#b3b3b3' : '#d6d6d6')};
+  background-color: #d6d6d6;
   border-radius: 0.5rem;
   max-width: 400px;
-  color: ${({ $selected }) => $selected && 'blue'};
+
+  &.active {
+    color: blue;
+    background-color: #b3b3b3;
+  }
 
   .icon {
     animation: rotating 1s linear infinite;
@@ -21,4 +21,4 @@ export const OptionItemContainer = styled.span<{
       transform: rotate(360deg);
     }
   }
-`
+}
