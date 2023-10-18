@@ -1,6 +1,4 @@
-import styled, { css } from 'styled-components'
-
-export const NavigationContainer = styled.ul`
+.navigation_container {
   position: fixed;
   width: 70px;
   height: 70px;
@@ -22,9 +20,9 @@ export const NavigationContainer = styled.ul`
     width: 150px;
     height: 150px;
   }
-`
+}
 
-export const NavigationItem = styled.button<{ $location?: string }>`
+.navigation_item {
   position: absolute;
   width: 2rem;
   height: 2rem;
@@ -43,19 +41,16 @@ export const NavigationItem = styled.button<{ $location?: string }>`
   cursor: pointer;
 
   &.active {
-    ${(props) => css`
-      ${props.$location}
-      &:hover {
-        color: red;
-        width: 2.25rem;
-        height: 2.25rem;
-      }
+    &:hover {
+      color: red;
+      width: 2.25rem;
+      height: 2.25rem;
+    }
 
-      &:active {
-        color: green;
-        width: 2rem;
-        height: 2rem;
-      }
-    `}
+    &:active {
+      color: green;
+      width: 2rem;
+      height: 2rem;
+    }
   }
-`
+}

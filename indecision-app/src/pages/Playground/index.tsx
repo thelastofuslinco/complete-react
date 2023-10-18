@@ -1,6 +1,7 @@
 import React from 'react'
 import Counter from '../../components/Counter'
 import Modal from '../../components/Modal'
+import Navigation from '../../components/Navigation'
 
 interface Props {}
 
@@ -20,6 +21,7 @@ class Playground extends React.Component<Props, State> {
           Open modal
         </button>
         <Counter message="simple message" />
+        <Navigation />
 
         {Array(9)
           .fill('')

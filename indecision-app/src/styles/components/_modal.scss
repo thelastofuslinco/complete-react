@@ -1,6 +1,4 @@
-import styled from 'styled-components'
-
-export const ModalContainer = styled.div`
+.modal_container {
   position: fixed;
   inset: 0;
   background-color: rgba(0, 0, 0, 0.4);
@@ -14,9 +12,9 @@ export const ModalContainer = styled.div`
     outline: 0;
     width: 600px;
   }
-`
+}
 
-export const Panel = styled.div`
+.modal_panel {
   position: fixed;
   inset: 6rem;
   background-color: #fff;
@@ -52,4 +50,4 @@ export const Panel = styled.div`
       }
     }
   }
-`
+}

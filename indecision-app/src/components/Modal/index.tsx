@@ -1,7 +1,6 @@
 import { createPortal } from 'react-dom'
 import React from 'react'
 import { GoX } from 'react-icons/go'
-import { ModalContainer, Panel } from './styles'
 
 class Modal extends React.Component<{ children; onClose }> {
   componentDidMount(): void {
@@ -14,13 +13,13 @@ class Modal extends React.Component<{ children; onClose }> {
   render() {
     return createPortal(
       <>
-        <ModalContainer onClick={this.props.onClose}></ModalContainer>
-        <Panel>
+        <div onClick={this.props.onClose} className="modal_container"></div>
+        <div className="modal_panel">
           <div className="close">
             <GoX onClick={this.props.onClose} className="icon" />
           </div>
           {this.props.children}
-        </Panel>
+        </div>
       </>,
       document.querySelector('.modal-container')
     )

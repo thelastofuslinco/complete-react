@@ -1,6 +1,4 @@
-import styled from 'styled-components'
-
-export const SidebarContainer = styled.section`
+.sidebar_container {
   position: absolute;
   top: 0;
   display: flex;
@@ -22,10 +20,9 @@ export const SidebarContainer = styled.section`
     border-radius: 0 0.5rem 0.5rem 0;
     left: 100%;
     top: 1rem;
-    cursor: pointer;
   }
 
   &:hover {
     left: 0;
   }
-`
+}
