@@ -1,10 +1,3 @@
-@import './base/base';
-@import './base/settings';
-@import './components/header';
-@import './components/form';
-@import './components/link';
-@import './components/sidebar';
-@import './components/modal';
-@import './components/navigation';
-@import './components/options';
-@import './components/optionItem';
+@import './base/index';
+@import './components/index';
+@import './pages/index';

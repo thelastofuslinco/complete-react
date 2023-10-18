@@ -6,23 +6,23 @@
     position: absolute;
     bottom: 100%;
     opacity: 0.5;
-    color: red;
+    color: $off-red;
   }
 
   input {
-    padding: 0.5rem 1rem;
+    padding: $sm-size $m-size;
     flex: 1;
-    font-size: 1rem;
+    font-size: $m-size;
     border: 1px solid black;
     outline: none;
 
     &.error {
-      border-color: red;
+      border-color: $off-red;
     }
   }
 
   button {
-    padding: 0.5rem 1rem;
-    font-size: 1rem;
+    padding: $sm-size $m-size;
+    font-size: $m-size;
   }
 }

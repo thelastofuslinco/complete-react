@@ -2,7 +2,6 @@ import React from 'react'
 import Header from '../../components/Header'
 import Options from '../../components/Options'
 import Form from '../../components/Form'
-import { HomeContainer } from './styles'
 import { v4 } from 'uuid'
 
 interface Props {}
@@ -61,7 +60,7 @@ class Home extends React.Component<Props, State> {
 
   render() {
     return (
-      <HomeContainer>
+      <div className="homeContainer">
         <Header
           title="Indecision app"
           subtitle="Put your life in the hands of a computer"
@@ -78,7 +77,7 @@ class Home extends React.Component<Props, State> {
           options={this.state.options}
         />
         <Form onSubmit={this.handleAddOption} />
-      </HomeContainer>
+      </div>
     )
   }
 }

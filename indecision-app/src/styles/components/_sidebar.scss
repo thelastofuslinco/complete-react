@@ -3,11 +3,11 @@
   top: 0;
   display: flex;
   flex-direction: column;
-  gap: 0.5rem;
+  gap: $sm-size;
   background-color: red;
   height: 100vh;
-  width: 150px;
-  left: -150px;
+  width: 9.375rem;
+  left: -9.375rem;
   z-index: 1;
   transition: 400ms;
 
@@ -16,10 +16,10 @@
     position: absolute;
     background-color: blue;
     box-shadow: 0 0 2px 2px rgba(0, 0, 0, 0.3);
-    padding: 1rem;
-    border-radius: 0 0.5rem 0.5rem 0;
+    padding: $m-size;
+    border-radius: 0 $sm-size $sm-size 0;
     left: 100%;
-    top: 1rem;
+    top: $m-size;
   }
 
   &:hover {

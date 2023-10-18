@@ -10,7 +10,7 @@
     position: relative;
     padding: 0;
     outline: 0;
-    width: 600px;
+    width: 37.5rem;
   }
 }
 
@@ -35,14 +35,14 @@
 
   .close {
     position: absolute;
-    right: 0.5rem;
-    top: 0.5rem;
+    right: $sm-size;
+    top: $sm-size;
 
     .icon {
-      font-size: 2rem;
+      font-size: $l-size;
       color: gray;
       cursor: pointer;
-      border-radius: 0.5rem;
+      border-radius: $sm-size;
 
       &:hover {
         box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
