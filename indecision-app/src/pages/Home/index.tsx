@@ -3,25 +3,29 @@ import Header from '../../components/Header'
 import Options from '../../components/Options'
 import Form from '../../components/Form'
 import { v4 } from 'uuid'
+import OptionModal from '../../components/OptionModal'
 
 interface Props {}
 
 interface State {
   options: Array<{ id: string; value: string }>
   selectedOption: string
+  showModal: boolean
 }
 
 class Home extends React.Component<Props, State> {
   state = {
     options: [],
-    selectedOption: null
+    selectedOption: null,
+    showModal: false
   }
 
   handleMakeDecision = () => {
     const randomNum = Math.floor(Math.random() * this.state.options.length)
 
     this.setState((prevState) => ({
-      selectedOption: prevState.options[randomNum].id
+      selectedOption: prevState.options[randomNum].value,
+      showModal: true
     }))
   }
 
@@ -58,6 +62,12 @@ class Home extends React.Component<Props, State> {
     }))
   }
 
+  handleDeleteALLOption = () => {
+    this.setState({
+      options: []
+    })
+  }
+
   render() {
     return (
       <div className="homeContainer">
@@ -65,26 +75,35 @@ class Home extends React.Component<Props, State> {
           title="Indecision app"
           subtitle="Put your life in the hands of a computer"
         />
-
-        <button
-          className="big_button"
-          disabled={!this.state.options.length}
-          onClick={this.handleMakeDecision}
-        >
-          What should i do?
-        </button>
         <div className="widget">
+          <button
+            className="big_button"
+            disabled={!this.state.options.length}
+            onClick={this.handleMakeDecision}
+          >
+            What should i do?
+          </button>
           <div className="widget_header">
             <span>Your options</span>
-            <button className="link_button">Remove all</button>
+            <button
+              className="link_button"
+              onClick={this.handleDeleteALLOption}
+            >
+              Remove all
+            </button>
           </div>
           <Options
             onDelete={this.handleDeleteOption}
-            value={this.state.selectedOption}
             options={this.state.options}
           />
+          <Form onSubmit={this.handleAddOption} />
+          {this.state.showModal && (
+            <OptionModal
+              option={this.state.selectedOption}
+              onClose={() => this.setState({ showModal: false })}
+            />
+          )}
         </div>
-        <Form onSubmit={this.handleAddOption} />
       </div>
     )
   }

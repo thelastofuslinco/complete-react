@@ -3,7 +3,7 @@
   flex-direction: column;
   gap: $sm-size;
   flex: 1;
-  overflow: auto;
+  overflow-y: scroll;
   background-color: $light-blue;
   padding: $m-size;
 }

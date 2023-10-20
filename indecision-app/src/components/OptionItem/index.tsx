@@ -7,7 +7,6 @@ interface State {
 
 interface Props {
   option: { id: string; value: string }
-  value: string
   onDelete: (id: string) => Promise<void>
 }
 
@@ -25,19 +24,19 @@ class OptionItem extends React.Component<Props, State> {
 
   render(): React.ReactNode {
     return (
-      <span
-        className={`optionItemContainer ${
-          this.props.option.id === this.props.value && 'active'
-        }`}
-      >
-        Option: {this.props.option.value}
+      <div className={'optionItemContainer'}>
+        <span>{this.props.option.value}</span>
         <button
           onClick={() => this.handleDelete(this.props.option.id)}
           disabled={this.state.loading}
         >
-          {this.state.loading ? <GoSync className="icon" /> : <GoXCircle />}
+          {this.state.loading ? (
+            <GoSync className="animation" />
+          ) : (
+            <GoXCircle />
+          )}
         </button>
-      </span>
+      </div>
     )
   }
 }

@@ -1,0 +1,19 @@
+.optionModal {
+  display: flex;
+  flex-direction: column;
+  gap: $m-size;
+  flex: 1;
+  overflow: auto;
+
+  > span {
+    overflow-y: scroll;
+    padding: 0 $m-size;
+    word-break: break-all;
+  }
+
+  > button {
+    margin: 0 $m-size $m-size;
+    background-color: $purple;
+    color: $off-white;
+  }
+}

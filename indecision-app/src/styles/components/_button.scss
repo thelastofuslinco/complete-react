@@ -3,12 +3,13 @@
   border: none;
   border-radius: $sm-size;
   box-shadow: 0 9px darken($color: $purple, $amount: 10);
-  width: 25rem;
+  width: 100%;
   padding: $m-size;
   margin: 0 auto;
   font-weight: bold;
   color: #ffffff;
   font-size: $l-size;
+  margin-bottom: $l-size;
 
   &:not(:disabled) {
     &:hover {
@@ -35,5 +36,11 @@
     &:active {
       transform: translateY(1px);
     }
+  }
+}
+
+@media (max-width: 425px) {
+  .big_button {
+    font-size: $m-size;
   }
 }

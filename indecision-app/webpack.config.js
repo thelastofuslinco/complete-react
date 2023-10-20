@@ -23,6 +23,7 @@ module.exports = {
     new HtmlWebpackPlugin({
       filename: 'index.html',
       template: 'public/index.html',
+      favicon: 'public/images/favicon.png',
       chunks: ['index']
     }),
     new MiniCssExtractPlugin()

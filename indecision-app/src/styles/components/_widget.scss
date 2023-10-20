@@ -3,9 +3,10 @@
   flex-direction: column;
   flex: 1;
   overflow: auto;
-  width: 25rem;
+  width: 19rem;
   margin: 0 auto;
   border-radius: $sm-size;
+  margin-bottom: $l-size;
 }
 
 .widget_header {
@@ -14,4 +15,11 @@
   padding: $m-size;
   display: flex;
   justify-content: space-between;
+  border-radius: 0.5rem 0.5rem 0 0;
+}
+
+@media (min-width: 425px) {
+  .widget {
+    width: 25rem;
+  }
 }
