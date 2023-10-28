@@ -32,6 +32,7 @@ module.exports = {
     runtimeChunk: 'single',
     minimizer: ['...', new CssMinimizerPlugin()]
   },
+
   module: {
     rules: [
       {
@@ -70,6 +71,11 @@ module.exports = {
     ]
   },
   resolve: {
+    fallback: {
+      crypto: require.resolve('crypto-browserify'),
+      buffer: require.resolve('buffer'),
+      stream: require.resolve('stream-browserify')
+    },
     extensions: ['.tsx', '.ts', '.js']
   }
 }

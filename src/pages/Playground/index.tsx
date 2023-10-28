@@ -2,16 +2,32 @@ import React from 'react'
 import Counter from '../../components/Counter'
 import Modal from '../../components/Modal'
 import Navigation from '../../components/Navigation'
+import { increment, incrementByAmount, store } from '../../store'
+import { Unsubscribe } from '@reduxjs/toolkit'
 
 interface Props {}
 
 interface State {
   open: boolean
+  unsubscribe: Unsubscribe
 }
 
 class Playground extends React.Component<Props, State> {
   state = {
-    open: false
+    open: false,
+    unsubscribe: store.subscribe(() => {
+      console.log(store.getState())
+    })
+  }
+
+  componentDidMount(): void {
+    store.dispatch(increment())
+    store.dispatch(increment())
+    store.dispatch(incrementByAmount(10))
+  }
+
+  componentWillUnmount(): void {
+    this.state.unsubscribe()
   }
 
   render() {
@@ -20,6 +36,9 @@ class Playground extends React.Component<Props, State> {
         <button onClick={() => this.setState({ open: true })}>
           Open modal
         </button>
+        {store.getState().counter.data}
+        <button onClick={() => store.dispatch(increment())}>click</button>
+
         <Counter message="simple message" />
         <Navigation />
 

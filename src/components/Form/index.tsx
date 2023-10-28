@@ -32,7 +32,7 @@ class Form extends React.Component<Props, State> {
     return (
       <form onSubmit={this.handleSubmit} className={'form_container'}>
         {this.state.error?.message && <span>{this.state.error?.message}</span>}
-        <input name="text" className={!!this.state.error?.message && 'error'} />
+        <input name="text" className={this.state.error && 'error'} />
         <button type="submit">send</button>
       </form>
     )
