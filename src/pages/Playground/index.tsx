@@ -2,10 +2,15 @@ import React from 'react'
 import Counter from '../../components/Counter'
 import Modal from '../../components/Modal'
 import Navigation from '../../components/Navigation'
-import { increment, incrementByAmount, store } from '../../store'
+import { addBook, increment, incrementByAmount, store } from '../../store'
 import { Unsubscribe } from '@reduxjs/toolkit'
+import { connect } from 'react-redux'
 
-interface Props {}
+interface Props {
+  counter: {
+    data: number
+  }
+}
 
 interface State {
   open: boolean
@@ -31,13 +36,22 @@ class Playground extends React.Component<Props, State> {
   }
 
   render() {
+    console.log(this)
+
     return (
       <div className="playgroundContainer">
         <button onClick={() => this.setState({ open: true })}>
           Open modal
         </button>
-        {store.getState().counter.data}
+        {this.props.counter.data}
         <button onClick={() => store.dispatch(increment())}>click</button>
+        <button
+          onClick={() =>
+            store.dispatch(addBook({ author: 'daddasd', title: 'dasdasd' }))
+          }
+        >
+          add Book
+        </button>
 
         <Counter message="simple message" />
         <Navigation />
@@ -77,4 +91,4 @@ class Playground extends React.Component<Props, State> {
   }
 }
 
-export default Playground
+export default connect((state: any) => ({ counter: state.counter }))(Playground)

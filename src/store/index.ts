@@ -5,12 +5,14 @@ import counterSlice, {
   incrementByAmount
 } from './slices/counterSlice'
 import { reset } from './actions'
+import booksSlice, { addBook } from './slices/booksSlice'
 
 const store = configureStore({
   reducer: {
-    counter: counterSlice
+    counter: counterSlice,
+    books: booksSlice
   },
   devTools: true
 })
 
-export { store, increment, decrement, incrementByAmount, reset }
+export { store, increment, decrement, incrementByAmount, reset, addBook }
