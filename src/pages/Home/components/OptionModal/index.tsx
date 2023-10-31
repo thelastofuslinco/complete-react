@@ -1,5 +1,5 @@
 import React from 'react'
-import Modal, { handleCloseModal } from '../Modal'
+import Modal, { handleCloseModal } from '../../../../components/Modal'
 
 interface Props {
   option: string

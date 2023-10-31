@@ -5,14 +5,27 @@ import counterSlice, {
   incrementByAmount
 } from './slices/counterSlice'
 import { reset } from './actions'
-import booksSlice, { addBook } from './slices/booksSlice'
+import expensesSlice, {
+  addExpense,
+  filterExpenses
+} from './slices/expensesSlice'
 
 const store = configureStore({
   reducer: {
     counter: counterSlice,
-    books: booksSlice
+    expenses: expensesSlice
   },
   devTools: true
 })
 
-export { store, increment, decrement, incrementByAmount, reset, addBook }
+export type RootState = ReturnType<typeof store.getState>
+
+export {
+  store,
+  increment,
+  decrement,
+  incrementByAmount,
+  reset,
+  addExpense,
+  filterExpenses
+}

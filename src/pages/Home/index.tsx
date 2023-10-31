@@ -1,8 +1,8 @@
 import React from 'react'
-import Header from '../../components/Header'
-import Options from '../../components/Options'
-import Form from '../../components/Form'
-import OptionModal from '../../components/OptionModal'
+import Header from './components/Header'
+import Options from './components/Options'
+import Form from './components/Form'
+import OptionModal from './components/OptionModal'
 import crypto from 'crypto'
 
 interface Props {}
@@ -69,8 +69,6 @@ class Home extends React.Component<Props, State> {
   }
 
   render() {
-    console.log(this.state.options, crypto)
-
     return (
       <div className="homeContainer">
         <Header

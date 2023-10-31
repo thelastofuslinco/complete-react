@@ -1,0 +1,14 @@
+.expensesList {
+  display: flex;
+  flex-direction: column;
+  gap: $sm-size;
+}
+
+.expenseContainer {
+  display: flex;
+  flex-direction: column;
+  gap: $sm-size;
+  padding: $sm-size $m-size;
+  background-color: $grey;
+  border-radius: $sm-size;
+}

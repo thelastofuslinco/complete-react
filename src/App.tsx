@@ -10,8 +10,8 @@ const Expensify = React.lazy(() => import('./pages/Expensify'))
 
 const links = [
   { label: 'home', to: '/' },
-  { label: 'playground', to: '/playground' },
-  { label: 'expensify', to: '/expensify' }
+  { label: 'expensify', to: '/expensify' },
+  { label: 'playground', to: '/playground' }
 ]
 
 const App = () => {

@@ -29,3 +29,8 @@ button {
     cursor: default;
   }
 }
+
+.pageContainer {
+  height: 100vh;
+  padding: $m-size;
+}

@@ -1,16 +1,18 @@
 import React from 'react'
-import Counter from '../../components/Counter'
+import { Unsubscribe } from '@reduxjs/toolkit'
+import { ConnectedProps, connect } from 'react-redux'
+import Counter from './components/Counter'
 import Modal from '../../components/Modal'
 import Navigation from '../../components/Navigation'
-import { addBook, increment, incrementByAmount, store } from '../../store'
-import { Unsubscribe } from '@reduxjs/toolkit'
-import { connect } from 'react-redux'
+import {
+  RootState,
+  increment,
+  incrementByAmount,
+  store,
+  addExpense
+} from '../../store'
 
-interface Props {
-  counter: {
-    data: number
-  }
-}
+interface Props extends PropsFromRedux {}
 
 interface State {
   open: boolean
@@ -26,9 +28,9 @@ class Playground extends React.Component<Props, State> {
   }
 
   componentDidMount(): void {
-    store.dispatch(increment())
-    store.dispatch(increment())
-    store.dispatch(incrementByAmount(10))
+    this.props.increment()
+    this.props.increment()
+    this.props.incrementByAmount(10)
   }
 
   componentWillUnmount(): void {
@@ -39,18 +41,22 @@ class Playground extends React.Component<Props, State> {
     console.log(this)
 
     return (
-      <div className="playgroundContainer">
+      <div className="pageContainer">
         <button onClick={() => this.setState({ open: true })}>
           Open modal
         </button>
         {this.props.counter.data}
-        <button onClick={() => store.dispatch(increment())}>click</button>
+        <button onClick={() => this.props.increment()}>click</button>
         <button
           onClick={() =>
-            store.dispatch(addBook({ author: 'daddasd', title: 'dasdasd' }))
+            this.props.addExpense({
+              note: 'fsfsdfs',
+              description: 'dsadsadasdsa',
+              amount: 20
+            })
           }
         >
-          add Book
+          click
         </button>
 
         <Counter message="simple message" />
@@ -91,4 +97,12 @@ class Playground extends React.Component<Props, State> {
   }
 }
 
-export default connect((state: any) => ({ counter: state.counter }))(Playground)
+const connector = connect((state: RootState) => ({ counter: state.counter }), {
+  increment,
+  incrementByAmount,
+  addExpense
+})
+
+type PropsFromRedux = ConnectedProps<typeof connector>
+
+export default connector(Playground)
