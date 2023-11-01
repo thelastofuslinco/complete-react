@@ -1,23 +1,11 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit'
 import crypto from 'crypto'
 import { ExpenseModel } from '../../models/ExpenseModel'
-
-interface Filters {
-  startDate: string
-  endDate: string
-  text: string
-  sortBy:
-    | 'amount asc'
-    | 'amount desc'
-    | 'description asc'
-    | 'description desc'
-    | 'createdAt asc'
-    | 'createdAt desc'
-}
+import { FilterModel } from '../../models/FilterModel'
 
 interface State {
   data: Array<ExpenseModel>
-  filters: Filters
+  filters: FilterModel
 }
 
 const initialState: State = {
@@ -45,12 +33,19 @@ const expensesSlice = createSlice({
         createdAt: new Date().toISOString()
       })
     },
-    filterExpenses: (state, action: PayloadAction<Filters>) => {
+    editExpense: (state, action: PayloadAction<ExpenseModel>) => {
+      const expenseIndex = state.data.findIndex(
+        (expense) => expense.id === action.payload.id
+      )
+
+      state.data[expenseIndex] = { ...action.payload }
+    },
+    filterExpenses: (state, action: PayloadAction<FilterModel>) => {
       state.filters = { ...action.payload }
     }
   }
 })
 
-export const { addExpense, filterExpenses } = expensesSlice.actions
+export const { addExpense, filterExpenses, editExpense } = expensesSlice.actions
 
 export default expensesSlice.reducer

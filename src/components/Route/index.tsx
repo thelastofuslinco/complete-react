@@ -12,7 +12,7 @@ class Route extends React.Component<Props> {
 
   render() {
     const { navigationPath } = this.context
-    const matchPath = this.props.path === navigationPath
+    const matchPath = this.props.path.includes(navigationPath)
     const everyPath = this.props.path.includes('*')
 
     if (matchPath || everyPath) {

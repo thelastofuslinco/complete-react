@@ -1,7 +1,7 @@
 import OptionItem from '../OptionItem'
 
 interface Props {
-  options: Array<{ id: string; value: string }>
+  options: Array<{ id: string; value: string; createdAt: string }>
   onDelete: (id: string) => Promise<void>
 }
 

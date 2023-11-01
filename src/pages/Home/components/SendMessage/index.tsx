@@ -8,7 +8,7 @@ interface Props {
   onSubmit: (value: string) => Promise<void>
 }
 
-class Form extends React.Component<Props, State> {
+class SendMessage extends React.Component<Props, State> {
   state = {
     loading: false,
     error: null
@@ -39,4 +39,4 @@ class Form extends React.Component<Props, State> {
   }
 }
 
-export default Form
+export default SendMessage

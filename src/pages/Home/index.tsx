@@ -1,14 +1,14 @@
 import React from 'react'
 import Header from './components/Header'
 import Options from './components/Options'
-import Form from './components/Form'
+import SendMessage from './components/SendMessage'
 import OptionModal from './components/OptionModal'
 import crypto from 'crypto'
 
 interface Props {}
 
 interface State {
-  options: Array<{ id: string; value: string }>
+  options: Array<{ id: string; value: string; createdAt: string }>
   selectedOption: string
   showModal: boolean
 }
@@ -56,7 +56,8 @@ class Home extends React.Component<Props, State> {
         ...prevValue.options,
         {
           id: crypto.randomBytes(20).toString('hex'),
-          value: response
+          value: response,
+          createdAt: new Date().toISOString()
         }
       ]
     }))
@@ -96,7 +97,7 @@ class Home extends React.Component<Props, State> {
             onDelete={this.handleDeleteOption}
             options={this.state.options}
           />
-          <Form onSubmit={this.handleAddOption} />
+          <SendMessage onSubmit={this.handleAddOption} />
           {this.state.showModal && (
             <OptionModal
               option={this.state.selectedOption}

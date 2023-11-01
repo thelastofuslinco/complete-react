@@ -1,12 +1,13 @@
 import React from 'react'
 import { GoSync, GoXCircle } from 'react-icons/go'
+import { diffTime } from '../../../../utils/diffTime'
 
 interface State {
   loading: boolean
 }
 
 interface Props {
-  option: { id: string; value: string }
+  option: { id: string; value: string; createdAt: string }
   onDelete: (id: string) => Promise<void>
 }
 
@@ -25,7 +26,9 @@ class OptionItem extends React.Component<Props, State> {
   render(): React.ReactNode {
     return (
       <div className={'optionItemContainer'}>
-        <span>{this.props.option.value}</span>
+        <span>
+          {this.props.option.value} - {diffTime(this.props.option.createdAt)}
+        </span>
         <button
           onClick={() => this.handleDelete(this.props.option.id)}
           disabled={this.state.loading}
