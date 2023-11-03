@@ -2,15 +2,23 @@ import { ConnectedProps, connect } from 'react-redux'
 import { RootState, filterExpenses } from '../../../../store'
 import Input from '../../../../components/Input'
 import Select from '../../../../components/Select'
+import DatePicker from '../../../../components/DatePicker'
 
 const FilterForm = ({ filters, filterExpenses }: PropsFromRedux) => {
   const handleSubmit = (event) => {
     event.preventDefault()
-    const { text, sort } = event.target
+    const { text, sort, date } = event.target
+
+    const startDate = date.value
+      ? new Date(date.value.split(' - ')[0]).toISOString()
+      : null
+    const endDate = date.value
+      ? new Date(date.value.split(' - ')[1]).toISOString()
+      : null
 
     filterExpenses({
-      startDate: null,
-      endDate: null,
+      startDate,
+      endDate,
       text: text.value,
       sortBy: sort.value
     })
@@ -27,6 +35,7 @@ const FilterForm = ({ filters, filterExpenses }: PropsFromRedux) => {
         <option value="createdAt asc">createdAt asc</option>
         <option value="createdAt desc">createdAt desc</option>
       </Select>
+      <DatePicker maxDate={new Date()} />
       <button type="submit">send</button>
     </form>
   )

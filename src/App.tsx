@@ -28,7 +28,6 @@ const App = () => {
         <Route path="/expensify">
           <Expensify />
         </Route>
-
         <Route path="*">
           <div>404</div>
         </Route>
