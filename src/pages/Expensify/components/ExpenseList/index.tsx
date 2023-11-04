@@ -5,9 +5,17 @@ import ExpenseItem from '../ExpenseItem'
 const ExpenseList = ({ data, filters }: PropsFromRedux) => {
   const filteredExpenses = data
     .filter((expense) => {
+      const createdDate = new Date(expense.createdAt).setHours(0, 0, 0, 0)
       const textMatch = expense.description.includes(filters.text)
+      const startDateMatch = filters.startDate
+        ? createdDate >= new Date(filters.startDate).getTime()
+        : true
 
-      return textMatch
+      const endDateMatch = filters.endDate
+        ? createdDate <= new Date(filters.endDate).getTime()
+        : true
+
+      return textMatch && startDateMatch && endDateMatch
     })
     .sort((a, b) => {
       if (filters.sortBy === 'amount asc') {

@@ -9,7 +9,15 @@ interface State {
 }
 
 const initialState: State = {
-  data: [],
+  data: [
+    {
+      id: crypto.randomBytes(20).toString('hex'),
+      description: crypto.randomBytes(20).toString('hex'),
+      amount: 10,
+      note: crypto.randomBytes(20).toString('hex'),
+      createdAt: new Date(1699061965116 * 0.99).toISOString()
+    }
+  ],
   filters: { startDate: null, endDate: null, text: '', sortBy: 'amount desc' }
 }
 
