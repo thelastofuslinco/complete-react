@@ -8,7 +8,8 @@ import { reset } from './actions'
 import expensesSlice, {
   addExpense,
   filterExpenses,
-  editExpense
+  editExpense,
+  removeExpense
 } from './slices/expensesSlice'
 
 const store = configureStore({
@@ -29,5 +30,6 @@ export {
   reset,
   addExpense,
   filterExpenses,
-  editExpense
+  editExpense,
+  removeExpense
 }

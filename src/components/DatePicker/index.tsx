@@ -1,4 +1,4 @@
-import React from 'react'
+import { Component } from 'react'
 import ReactDatePicker from 'react-datepicker'
 import 'react-datepicker/dist/react-datepicker.css'
 
@@ -6,7 +6,7 @@ interface Props {
   maxDate?: Date
 }
 
-class DatePicker extends React.Component<Props> {
+class DatePicker extends Component<Props> {
   state = {
     startDate: null,
     endDate: null

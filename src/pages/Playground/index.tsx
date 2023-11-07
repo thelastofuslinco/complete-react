@@ -50,9 +50,11 @@ class Playground extends React.Component<Props, State> {
         <button
           onClick={() =>
             this.props.addExpense({
+              id: '1',
               note: 'fsfsdfs',
               description: 'dsadsadasdsa',
-              amount: 20
+              amount: 20,
+              createdAt: new Date().toISOString()
             })
           }
         >

@@ -1,21 +1,30 @@
-import { decrement, increment, incrementByAmount } from '../../../store'
+import { decrement, increment, incrementByAmount, reset } from '../../../store'
+import counterReducer from '../../../store/slices/counterSlice'
 
 describe('Counter slice', () => {
-  test('should increment', () => {
-    const action = increment()
-
-    expect(action).toEqual({ payload: undefined, type: 'counter/increment' })
+  test('should setup default counter value', () => {
+    const state = counterReducer(undefined, { type: '@@INIT' })
+    expect(state).toEqual({ data: 0 })
   })
 
-  test('should increment by amount', () => {
-    const action = incrementByAmount(10)
-
-    expect(action).toEqual({ payload: 10, type: 'counter/incrementByAmount' })
+  test('should increment', () => {
+    const state = counterReducer(undefined, increment())
+    expect(state).toEqual({ data: 1 })
   })
 
   test('should decrement', () => {
-    const action = decrement()
+    const state = counterReducer(undefined, decrement())
+    expect(state).toEqual({ data: -1 })
+  })
 
-    expect(action).toEqual({ payload: undefined, type: 'counter/decrement' })
+  test('should increment by amount', () => {
+    const amount = 20
+    const state = counterReducer(undefined, incrementByAmount(amount))
+    expect(state).toEqual({ data: amount })
+  })
+
+  test('should reset', () => {
+    const state = counterReducer(undefined, reset())
+    expect(state).toEqual({ data: 0 })
   })
 })

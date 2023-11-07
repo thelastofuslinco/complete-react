@@ -8,11 +8,11 @@ const ExpenseList = ({ data, filters }: PropsFromRedux) => {
       const createdDate = new Date(expense.createdAt).setHours(0, 0, 0, 0)
       const textMatch = expense.description.includes(filters.text)
       const startDateMatch = filters.startDate
-        ? createdDate >= new Date(filters.startDate).getTime()
+        ? createdDate >= new Date(filters.startDate).setHours(0, 0, 0, 0)
         : true
 
       const endDateMatch = filters.endDate
-        ? createdDate <= new Date(filters.endDate).getTime()
+        ? createdDate <= new Date(filters.endDate).setHours(0, 0, 0, 0)
         : true
 
       return textMatch && startDateMatch && endDateMatch
