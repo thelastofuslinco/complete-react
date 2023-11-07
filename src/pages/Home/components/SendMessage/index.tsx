@@ -1,4 +1,4 @@
-import React from 'react'
+import { Component } from 'react'
 
 interface State {
   loading: boolean
@@ -8,7 +8,7 @@ interface Props {
   onSubmit: (value: string) => Promise<void>
 }
 
-class SendMessage extends React.Component<Props, State> {
+class SendMessage extends Component<Props, State> {
   state = {
     loading: false,
     error: null
@@ -28,7 +28,7 @@ class SendMessage extends React.Component<Props, State> {
       .catch((error: Error) => this.setState({ loading: false, error }))
   }
 
-  render(): React.ReactNode {
+  render() {
     return (
       <form onSubmit={this.handleSubmit} className={'form_container'}>
         {this.state.error?.message && <span>{this.state.error?.message}</span>}

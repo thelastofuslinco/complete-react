@@ -1,4 +1,4 @@
-import React from 'react'
+import { Component } from 'react'
 import Modal, { handleCloseModal } from '../../../../components/Modal'
 
 interface Props {
@@ -6,8 +6,8 @@ interface Props {
   onClose: () => void
 }
 
-class OptionModal extends React.Component<Props> {
-  render(): React.ReactNode {
+class OptionModal extends Component<Props> {
+  render() {
     return (
       <Modal onClose={this.props.onClose}>
         <div className="optionModal">

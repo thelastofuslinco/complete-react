@@ -1,0 +1,29 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Expense item component should render expense item 1`] = `
+[
+  <li
+    class="expenseContainer"
+  >
+    <span>
+      Description: 
+      any_description
+    </span>
+    <span>
+      Amount: 
+      822
+    </span>
+    <span>
+      Note: 
+      any_description
+    </span>
+    <span>
+      CreatedAt: 
+      11/5/2023, 12:00:00 AM
+    </span>
+    <button>
+      Edit
+    </button>
+  </li>,
+]
+`;

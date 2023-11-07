@@ -1,0 +1,68 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Filter form component should render filter form 1`] = `
+<form
+  data=""
+  name=""
+>
+  <input
+    class="input undefined"
+    name="text"
+    value=""
+  />
+  <select
+    class="select undefined"
+    name="sort"
+  >
+    <option
+      value="amount asc"
+    >
+      amount asc
+    </option>
+    <option
+      value="amount desc"
+    >
+      amount desc
+    </option>
+    <option
+      value="description asc"
+    >
+      description asc
+    </option>
+    <option
+      value="description desc"
+    >
+      description desc
+    </option>
+    <option
+      value="createdAt asc"
+    >
+      createdAt asc
+    </option>
+    <option
+      value="createdAt desc"
+    >
+      createdAt desc
+    </option>
+  </select>
+  <div
+    class="react-datepicker-wrapper"
+  >
+    <div
+      class="react-datepicker__input-container"
+    >
+      <input
+        class=""
+        name="date"
+        type="text"
+        value=""
+      />
+    </div>
+  </div>
+  <button
+    type="submit"
+  >
+    send
+  </button>
+</form>
+`;

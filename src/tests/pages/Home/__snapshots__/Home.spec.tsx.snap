@@ -1,0 +1,55 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Home page should render page 1`] = `
+<main
+  class="homeContainer"
+>
+  <header
+    class="header_container"
+  >
+    <h1>
+      Indecision app
+    </h1>
+    <span>
+      Put your life in the hands of a computer
+    </span>
+  </header>
+  <div
+    class="widget"
+  >
+    <button
+      class="big_button"
+      disabled=""
+    >
+      What should i do?
+    </button>
+    <div
+      class="widget_header"
+    >
+      <span>
+        Your options
+      </span>
+      <button
+        class="link_button"
+      >
+        Remove all
+      </button>
+    </div>
+    <div
+      class="optionsContainer"
+    />
+    <form
+      class="form_container"
+    >
+      <input
+        name="text"
+      />
+      <button
+        type="submit"
+      >
+        send
+      </button>
+    </form>
+  </div>
+</main>
+`;

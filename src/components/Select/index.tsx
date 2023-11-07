@@ -1,12 +1,12 @@
-import React from 'react'
+import { Component, SelectHTMLAttributes } from 'react'
 
 interface State {
   value: any
 }
 
-interface Props extends React.SelectHTMLAttributes<HTMLSelectElement> {}
+interface Props extends SelectHTMLAttributes<HTMLSelectElement> {}
 
-class Select extends React.Component<Props, State> {
+class Select extends Component<Props, State> {
   state = { value: this.props.value || '' }
 
   render() {

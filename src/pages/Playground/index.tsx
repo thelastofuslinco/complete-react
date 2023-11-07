@@ -1,4 +1,4 @@
-import React from 'react'
+import { Component } from 'react'
 import { Unsubscribe } from '@reduxjs/toolkit'
 import { ConnectedProps, connect } from 'react-redux'
 import Counter from './components/Counter'
@@ -19,7 +19,7 @@ interface State {
   unsubscribe: Unsubscribe
 }
 
-class Playground extends React.Component<Props, State> {
+class Playground extends Component<Props, State> {
   state = {
     open: false,
     unsubscribe: store.subscribe(() => {

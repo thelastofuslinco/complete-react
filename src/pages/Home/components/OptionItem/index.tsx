@@ -1,4 +1,4 @@
-import React from 'react'
+import { Component } from 'react'
 import { GoSync, GoXCircle } from 'react-icons/go'
 import { diffTime } from '../../../../utils/diffTime'
 
@@ -11,7 +11,7 @@ interface Props {
   onDelete: (id: string) => Promise<void>
 }
 
-class OptionItem extends React.Component<Props, State> {
+class OptionItem extends Component<Props, State> {
   state = {
     loading: false
   }
@@ -23,7 +23,7 @@ class OptionItem extends React.Component<Props, State> {
     })
   }
 
-  render(): React.ReactNode {
+  render() {
     return (
       <div className={'optionItemContainer'}>
         <span>

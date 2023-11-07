@@ -1,6 +1,5 @@
 import { Component } from 'react'
 import ReactDatePicker from 'react-datepicker'
-import 'react-datepicker/dist/react-datepicker.css'
 
 interface Props {
   maxDate?: Date

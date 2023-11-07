@@ -1,7 +1,7 @@
-import React from 'react'
+import { HtmlHTMLAttributes } from 'react'
 import { GoSync } from 'react-icons/go'
 
-const Loading = (props: React.HtmlHTMLAttributes<HTMLDivElement>) => {
+const Loading = (props: HtmlHTMLAttributes<HTMLDivElement>) => {
   return (
     <div {...props}>
       <GoSync className="loadingIcon" />

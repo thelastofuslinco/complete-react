@@ -1,10 +1,10 @@
-import { Component } from 'react'
+import { Component, InputHTMLAttributes } from 'react'
 
 interface State {
   value: string | number | readonly string[]
 }
 
-interface Props extends React.InputHTMLAttributes<HTMLInputElement> {}
+interface Props extends InputHTMLAttributes<HTMLInputElement> {}
 
 class Input extends Component<Props, State> {
   state = { value: this.props.value || '' }

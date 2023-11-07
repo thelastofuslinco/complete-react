@@ -1,9 +1,13 @@
+import { FormHTMLAttributes } from 'react'
 import { ConnectedProps, connect } from 'react-redux'
 import { addExpense, editExpense } from '../../../../store'
 import Input from '../../../../components/Input'
 import { ExpenseModel } from '../../../../models/ExpenseModel'
 import crypto from 'crypto'
-interface Props extends PropsFromRedux, Partial<ExpenseModel> {
+interface Props
+  extends PropsFromRedux,
+    Partial<ExpenseModel>,
+    FormHTMLAttributes<HTMLFormElement> {
   onClick?: () => void
 }
 
@@ -14,7 +18,8 @@ const ExpenseForm = ({
   note,
   id,
   createdAt,
-  onClick
+  onClick,
+  ...props
 }: Props) => {
   const handleSubmit = (event) => {
     event.preventDefault()
@@ -49,7 +54,7 @@ const ExpenseForm = ({
   }
 
   return (
-    <form onSubmit={handleSubmit} className="form">
+    <form onSubmit={handleSubmit} className="form" {...props}>
       <Input name="description" type="text" value={description} />
       <Input name="amount" type="number" value={amount} />
       <Input name="note" value={note} />

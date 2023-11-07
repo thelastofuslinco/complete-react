@@ -1,10 +1,10 @@
-import React from 'react'
+import { Component } from 'react'
 
 interface State {
   count: number
 }
 
-class Counter extends React.Component<{ message?: string }, State> {
+class Counter extends Component<{ message?: string }, State> {
   state = {
     count: 0
   }

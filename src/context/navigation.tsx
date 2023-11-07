@@ -1,6 +1,6 @@
-import React from 'react'
+import { createContext, ReactNode, Component } from 'react'
 
-const NavigationContext = React.createContext({
+const NavigationContext = createContext({
   navigationPath: '',
   navigate: (value: string) => {}
 })
@@ -9,9 +9,9 @@ interface State {
   navigationPath: string
 }
 interface Props {
-  children: React.ReactNode
+  children: ReactNode
 }
-class NavigationProvider extends React.Component<Props, State> {
+class NavigationProvider extends Component<Props, State> {
   constructor(props) {
     super(props)
     this.navigate = this.navigate.bind(this)
@@ -37,7 +37,7 @@ class NavigationProvider extends React.Component<Props, State> {
     this.setState({ navigationPath: to })
   }
 
-  render(): React.ReactNode {
+  render() {
     return (
       <NavigationContext.Provider
         value={{

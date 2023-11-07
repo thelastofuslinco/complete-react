@@ -1,12 +1,12 @@
-import React from 'react'
+import { lazy } from 'react'
 import Route from './components/Route'
 import Sidebar from './components/Sidebar'
 import Switch from './components/Switch'
 import NavigationProvider from './context/navigation'
 
-const Playground = React.lazy(() => import('./pages/Playground'))
-const Home = React.lazy(() => import('./pages/Home'))
-const Expensify = React.lazy(() => import('./pages/Expensify'))
+const Playground = lazy(() => import('./pages/Playground'))
+const Home = lazy(() => import('./pages/Home'))
+const Expensify = lazy(() => import('./pages/Expensify'))
 
 const links = [
   { label: 'home', to: '/' },

@@ -1,14 +1,14 @@
 import { NavigationContext } from '../../context/navigation'
-import React from 'react'
+import { ReactNode, Component, ContextType, Suspense } from 'react'
 import Loading from '../Loading'
 interface Props {
   path: string
-  children: React.ReactNode
+  children: ReactNode
 }
 
-class Route extends React.Component<Props> {
+class Route extends Component<Props> {
   static contextType = NavigationContext
-  declare context: React.ContextType<typeof NavigationContext>
+  declare context: ContextType<typeof NavigationContext>
 
   render() {
     const { navigationPath } = this.context
@@ -17,9 +17,9 @@ class Route extends React.Component<Props> {
 
     if (matchPath || everyPath) {
       return (
-        <React.Suspense fallback={<Loading className="loadingContainer" />}>
+        <Suspense fallback={<Loading className="loadingContainer" />}>
           {this.props.children}
-        </React.Suspense>
+        </Suspense>
       )
     }
   }

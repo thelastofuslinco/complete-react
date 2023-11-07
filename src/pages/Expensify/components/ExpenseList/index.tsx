@@ -38,11 +38,15 @@ const ExpenseList = ({ data, filters }: PropsFromRedux) => {
     })
 
   return (
-    <div className="expenseList">
-      {filteredExpenses.map((expense) => (
-        <ExpenseItem {...expense} key={expense.id} />
-      ))}
-    </div>
+    <ul className="expenseList">
+      {filteredExpenses.length === 0 ? (
+        <p>No expenses</p>
+      ) : (
+        filteredExpenses.map((expense) => (
+          <ExpenseItem {...expense} key={expense.id} />
+        ))
+      )}
+    </ul>
   )
 }
 

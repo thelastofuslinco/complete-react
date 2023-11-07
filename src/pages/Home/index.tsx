@@ -1,4 +1,4 @@
-import React from 'react'
+import { Component } from 'react'
 import Header from './components/Header'
 import Options from './components/Options'
 import SendMessage from './components/SendMessage'
@@ -13,7 +13,7 @@ interface State {
   showModal: boolean
 }
 
-class Home extends React.Component<Props, State> {
+class Home extends Component<Props, State> {
   state = {
     options: [],
     selectedOption: null,
@@ -71,7 +71,7 @@ class Home extends React.Component<Props, State> {
 
   render() {
     return (
-      <div className="homeContainer">
+      <main className="homeContainer">
         <Header
           title="Indecision app"
           subtitle="Put your life in the hands of a computer"
@@ -105,7 +105,7 @@ class Home extends React.Component<Props, State> {
             />
           )}
         </div>
-      </div>
+      </main>
     )
   }
 }

@@ -1,13 +1,13 @@
-import React from 'react'
+import { ReactNode, Component, ContextType } from 'react'
 import { NavigationContext } from '../../context/navigation'
 
 interface Props {
   to: string
-  children: React.ReactNode
+  children: ReactNode
 }
-class Link extends React.Component<Props> {
+class Link extends Component<Props> {
   static contextType = NavigationContext
-  declare context: React.ContextType<typeof NavigationContext>
+  declare context: ContextType<typeof NavigationContext>
 
   handleClick = (event) => {
     if (event.metaKey || event.ctrlKey) return

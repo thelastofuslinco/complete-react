@@ -1,0 +1,77 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Expense list component should render expense list 1`] = `
+<ul
+  class="expenseList"
+>
+  <li
+    class="expenseContainer"
+  >
+    <span>
+      Description: 
+      any_description
+    </span>
+    <span>
+      Amount: 
+      822
+    </span>
+    <span>
+      Note: 
+      any_description
+    </span>
+    <span>
+      CreatedAt: 
+      11/5/2023, 12:00:00 AM
+    </span>
+    <button>
+      Edit
+    </button>
+  </li>
+  <li
+    class="expenseContainer"
+  >
+    <span>
+      Description: 
+      any_description
+    </span>
+    <span>
+      Amount: 
+      98
+    </span>
+    <span>
+      Note: 
+      any_description
+    </span>
+    <span>
+      CreatedAt: 
+      11/4/2023, 12:00:00 AM
+    </span>
+    <button>
+      Edit
+    </button>
+  </li>
+  <li
+    class="expenseContainer"
+  >
+    <span>
+      Description: 
+      any_description
+    </span>
+    <span>
+      Amount: 
+      55
+    </span>
+    <span>
+      Note: 
+      any_description
+    </span>
+    <span>
+      CreatedAt: 
+      11/3/2023, 12:00:00 AM
+    </span>
+    <button>
+      Edit
+    </button>
+  </li>
+</ul>
+`;

@@ -1,9 +1,9 @@
 import { createPortal } from 'react-dom'
-import React from 'react'
+import { ReactNode, Component } from 'react'
 import { GoX } from 'react-icons/go'
 
 interface Props {
-  children: React.ReactNode
+  children: ReactNode
   onClose: () => void
 }
 
@@ -13,7 +13,7 @@ export const handleCloseModal = async (onClose) => {
   onClose()
 }
 
-class Modal extends React.Component<Props> {
+class Modal extends Component<Props> {
   componentDidMount(): void {
     document.body.style.overflow = 'hidden'
     setTimeout(

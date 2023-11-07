@@ -1,10 +1,10 @@
-import React from 'react'
+import { Component } from 'react'
 import { store } from '../../store'
 import FilterForm from './components/FilterForm'
 import ExpenseForm from './components/ExpenseForm'
 import ExpenseList from './components/ExpenseList'
 
-class Expensify extends React.Component {
+class Expensify extends Component {
   state = {
     unsubscribe: store.subscribe(() => {
       console.log(store.getState())
@@ -17,11 +17,11 @@ class Expensify extends React.Component {
 
   render() {
     return (
-      <div className="pageContainer">
+      <main className="pageContainer">
         <ExpenseForm />
         <FilterForm />
         <ExpenseList />
-      </div>
+      </main>
     )
   }
 }

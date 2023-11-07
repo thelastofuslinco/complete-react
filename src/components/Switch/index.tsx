@@ -1,14 +1,14 @@
-import React from 'react'
+import { JSX, Component, ContextType } from 'react'
 import { NavigationContext } from '../../context/navigation'
 
 interface Props {
-  children: React.JSX.Element[]
+  children: JSX.Element[]
 }
-class Switch extends React.Component<Props> {
+class Switch extends Component<Props> {
   static contextType = NavigationContext
-  declare context: React.ContextType<typeof NavigationContext>
+  declare context: ContextType<typeof NavigationContext>
 
-  render(): React.ReactNode {
+  render() {
     const { navigationPath } = this.context
 
     let isRender = false
