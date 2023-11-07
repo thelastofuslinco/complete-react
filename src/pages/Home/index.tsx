@@ -3,7 +3,6 @@ import Header from './components/Header'
 import Options from './components/Options'
 import SendMessage from './components/SendMessage'
 import OptionModal from './components/OptionModal'
-import crypto from 'crypto'
 
 interface Props {}
 
@@ -55,7 +54,7 @@ class Home extends Component<Props, State> {
       options: [
         ...prevValue.options,
         {
-          id: crypto.randomBytes(20).toString('hex'),
+          id: crypto.randomUUID(),
           value: response,
           createdAt: new Date().toISOString()
         }

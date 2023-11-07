@@ -26,9 +26,26 @@ describe('Expense form component', () => {
         note: { value: 'any_note' }
       }
     })
-    fireEvent.submit(form)
+
     expect(form['amount'].value).toBe(90)
     expect(form['description'].value).toBe('any_description')
     expect(form['note'].value).toBe('any_note')
+  })
+
+  test('should submit expense form', () => {
+    renderWithProviders(<ExpenseForm name="" />)
+    const form: HTMLFormElement = screen.getByRole('form', { name: '' })
+    fireEvent.change(form, {
+      target: {
+        amount: { value: 90 },
+        description: { value: 'any_description' },
+        note: { value: 'any_note' }
+      }
+    })
+    fireEvent.submit(form)
+
+    expect(form['amount'].value).toBe('')
+    expect(form['description'].value).toBe('')
+    expect(form['note'].value).toBe('')
   })
 })

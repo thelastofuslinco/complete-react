@@ -3,7 +3,6 @@ import { ConnectedProps, connect } from 'react-redux'
 import { addExpense, editExpense } from '../../../../store'
 import Input from '../../../../components/Input'
 import { ExpenseModel } from '../../../../models/ExpenseModel'
-import crypto from 'crypto'
 interface Props
   extends PropsFromRedux,
     Partial<ExpenseModel>,
@@ -39,7 +38,7 @@ const ExpenseForm = ({
     } else {
       dispatch(
         addExpense({
-          id: crypto.randomBytes(20).toString('hex'),
+          id: crypto.randomUUID(),
           description: description.value,
           amount: amount.value,
           note: note.value,
