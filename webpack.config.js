@@ -1,56 +1,49 @@
+// Generated using webpack-cli https://github.com/webpack/webpack-cli
+
 const path = require('path')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
-const MiniCssExtractPlugin = require('mini-css-extract-plugin')
-const CssMinimizerPlugin = require('css-minimizer-webpack-plugin')
+const WorkboxWebpackPlugin = require('workbox-webpack-plugin')
 
-module.exports = {
-  devtool: 'inline-source-map',
-  devServer: {
-    static: path.resolve(__dirname, 'dist'),
-    port: 3000,
-    historyApiFallback: true
-  },
-  entry: {
-    index: './src/index.js'
-  },
+const isProduction = process.env.NODE_ENV == 'production'
+
+const stylesHandler = 'style-loader'
+
+const config = {
+  entry: './src/index.js',
   output: {
-    publicPath: '/',
-    filename: '[name].bundle.js',
-    path: path.resolve(__dirname, 'dist'),
-    clean: true
+    path: path.resolve(__dirname, 'dist')
+  },
+  devServer: {
+    open: true,
+    host: 'localhost',
+    historyApiFallback: true
   },
   plugins: [
     new HtmlWebpackPlugin({
-      filename: 'index.html',
-      template: 'public/index.html',
-      favicon: 'public/images/favicon.png',
-      chunks: ['index']
-    }),
-    new MiniCssExtractPlugin()
-  ],
-  optimization: {
-    runtimeChunk: 'single',
-    minimizer: ['...', new CssMinimizerPlugin()]
-  },
+      template: 'public/index.html'
+    })
 
+    // Add your plugins here
+    // Learn more about plugins from https://webpack.js.org/configuration/plugins/
+  ],
   module: {
     rules: [
       {
-        test: /\.(woff(2)?|eot|ttf|otf|svg|)$/,
-        type: 'asset/inline'
+        test: /\.(ts|tsx)$/i,
+        loader: 'ts-loader',
+        exclude: ['/node_modules/']
       },
       {
-        test: /\.(?:ico|gif|png|jpg|jpeg)$/i,
-        type: 'asset/resource'
+        test: /\.css$/i,
+        use: [stylesHandler, 'css-loader']
       },
       {
-        test: /\.s?[ac]ss$/i,
-        use: ['style-loader', 'css-loader', 'sass-loader']
+        test: /\.s[ac]ss$/i,
+        use: [stylesHandler, 'css-loader', 'sass-loader']
       },
       {
-        test: /\.tsx?$/,
-        use: 'ts-loader',
-        exclude: /node_modules/
+        test: /\.(eot|svg|ttf|woff|woff2|png|jpg|gif)$/i,
+        type: 'asset'
       },
       {
         test: /\.js$/,
@@ -68,14 +61,23 @@ module.exports = {
           }
         }
       }
+
+      // Add your rules for custom modules here
+      // Learn more about loaders from https://webpack.js.org/loaders/
     ]
   },
   resolve: {
-    fallback: {
-      crypto: require.resolve('crypto-browserify'),
-      buffer: require.resolve('buffer'),
-      stream: require.resolve('stream-browserify')
-    },
-    extensions: ['.tsx', '.ts', '.js']
+    extensions: ['.tsx', '.ts', '.jsx', '.js', '...']
   }
+}
+
+module.exports = () => {
+  if (isProduction) {
+    config.mode = 'production'
+
+    config.plugins.push(new WorkboxWebpackPlugin.GenerateSW())
+  } else {
+    config.mode = 'development'
+  }
+  return config
 }

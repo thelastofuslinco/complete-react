@@ -7,6 +7,7 @@ import NavigationProvider from './context/navigation'
 const Playground = lazy(() => import('./pages/Playground'))
 const Home = lazy(() => import('./pages/Home'))
 const Expensify = lazy(() => import('./pages/Expensify'))
+const NotFound = lazy(() => import('./pages/NotFound'))
 
 const links = [
   { label: 'home', to: '/' },
@@ -29,7 +30,7 @@ const App = () => {
           <Expensify />
         </Route>
         <Route path="*">
-          <div>404</div>
+          <NotFound />
         </Route>
       </Switch>
     </NavigationProvider>
