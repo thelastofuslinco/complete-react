@@ -32,7 +32,7 @@ describe('Expense form component', () => {
     expect(form['note'].value).toBe('any_note')
   })
 
-  test('should submit expense form', () => {
+  test('should change and submit expense', () => {
     renderWithProviders(<ExpenseForm name="" />)
     const form: HTMLFormElement = screen.getByRole('form', { name: '' })
     fireEvent.change(form, {
@@ -47,5 +47,23 @@ describe('Expense form component', () => {
     expect(form['amount'].value).toBe('')
     expect(form['description'].value).toBe('')
     expect(form['note'].value).toBe('')
+  })
+
+  test('should edit expense', () => {
+    const handleClick = jest.fn()
+    renderWithProviders(
+      <ExpenseForm name="" {...expenses[0]} onClick={handleClick} />
+    )
+    const form: HTMLFormElement = screen.getByRole('form', { name: '' })
+    fireEvent.change(form, {
+      target: {
+        amount: { value: 90 },
+        description: { value: 'any_description' },
+        note: { value: 'any_note' }
+      }
+    })
+    fireEvent.submit(form)
+
+    expect(handleClick).toHaveBeenCalledTimes(1)
   })
 })

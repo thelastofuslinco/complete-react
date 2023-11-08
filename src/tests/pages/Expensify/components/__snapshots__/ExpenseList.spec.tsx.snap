@@ -50,28 +50,5 @@ exports[`Expense list component should render expense list 1`] = `
       Edit
     </button>
   </li>
-  <li
-    class="expenseContainer"
-  >
-    <span>
-      Description: 
-      any_description
-    </span>
-    <span>
-      Amount: 
-      55
-    </span>
-    <span>
-      Note: 
-      any_description
-    </span>
-    <span>
-      CreatedAt: 
-      11/3/2023, 12:00:00 AM
-    </span>
-    <button>
-      Edit
-    </button>
-  </li>
 </ul>
 `;

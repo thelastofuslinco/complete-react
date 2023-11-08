@@ -1,35 +1,5 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Expense form component should change expense form 1`] = `
-<form
-  class="form"
-  name=""
->
-  <input
-    class="input undefined"
-    name="description"
-    type="text"
-    value="any_description"
-  />
-  <input
-    class="input undefined"
-    name="amount"
-    type="number"
-    value="822"
-  />
-  <input
-    class="input undefined"
-    name="note"
-    value="any_description"
-  />
-  <button
-    type="submit"
-  >
-    send
-  </button>
-</form>
-`;
-
 exports[`Expense form component should render expense form 1`] = `
 <form
   class="form"

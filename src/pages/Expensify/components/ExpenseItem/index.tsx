@@ -13,13 +13,14 @@ class ExpenseItem extends Component<Props, State> {
     isEdit: false
   }
 
+  handleClick = () => {
+    this.setState((prevState) => ({ isEdit: !prevState.isEdit }))
+  }
+
   render() {
     return this.state.isEdit ? (
       <li className="expenseContainer">
-        <ExpenseForm
-          {...this.props}
-          onClick={() => this.setState({ isEdit: false })}
-        />
+        <ExpenseForm {...this.props} onClick={this.handleClick} />
       </li>
     ) : (
       <li className="expenseContainer">
@@ -29,7 +30,7 @@ class ExpenseItem extends Component<Props, State> {
         <span>
           CreatedAt: {new Date(this.props.createdAt).toLocaleString('en-us')}
         </span>
-        <button onClick={() => this.setState({ isEdit: true })}>Edit</button>
+        <button onClick={this.handleClick}>Edit</button>
       </li>
     )
   }
