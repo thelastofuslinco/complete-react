@@ -5,7 +5,7 @@
   "main": "index.tsx",
   "scripts": {
     "build": "webpack --mode=production --node-env=production",
-    "serve": "webpack serve",
+    "start": "webpack serve",
     "test": "jest"
   },
   "author": "thelastofuslinco",

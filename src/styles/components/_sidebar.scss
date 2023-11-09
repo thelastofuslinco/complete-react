@@ -4,7 +4,8 @@
   display: flex;
   flex-direction: column;
   gap: $sm-size;
-  background-color: red;
+  background-color: darken($color: $dark-blue, $amount: 5);
+  box-shadow: $xsm-size 0 $sm-size darken($color: $dark-blue, $amount: 10);
   height: 100vh;
   width: 9.375rem;
   left: -9.375rem;
@@ -14,8 +15,8 @@
   &::before {
     content: '';
     position: absolute;
-    background-color: blue;
-    box-shadow: 0 0 2px 2px rgba(0, 0, 0, 0.3);
+    background-color: darken($color: $dark-blue, $amount: 5);
+    box-shadow: $xsm-size 0 $sm-size darken($color: $dark-blue, $amount: 10);
     padding: $m-size;
     border-radius: 0 $sm-size $sm-size 0;
     left: 100%;

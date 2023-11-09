@@ -93,6 +93,10 @@ exports[`Expensify page should render page 1`] = `
       send
     </button>
   </form>
+  <p>
+    total:
+    0
+  </p>
   <ul
     class="expenseList"
   >

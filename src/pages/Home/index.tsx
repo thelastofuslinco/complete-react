@@ -1,5 +1,5 @@
 import { Component } from 'react'
-import Header from './components/Header'
+import Header from '../../components/Header'
 import Options from './components/Options'
 import SendMessage from './components/SendMessage'
 import OptionModal from './components/OptionModal'
@@ -70,7 +70,7 @@ class Home extends Component<Props, State> {
 
   render() {
     return (
-      <main className="homeContainer">
+      <main className="pageContainer">
         <Header
           title="Indecision app"
           subtitle="Put your life in the hands of a computer"

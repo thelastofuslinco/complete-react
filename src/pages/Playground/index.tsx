@@ -42,24 +42,26 @@ class Playground extends Component<Props, State> {
 
     return (
       <div className="pageContainer">
-        <button onClick={() => this.setState({ open: true })}>
-          Open modal
-        </button>
-        {this.props.counter.data}
-        <button onClick={() => this.props.increment()}>click</button>
-        <button
-          onClick={() =>
-            this.props.addExpense({
-              id: '1',
-              note: 'fsfsdfs',
-              description: 'dsadsadasdsa',
-              amount: 20,
-              createdAt: new Date().toISOString()
-            })
-          }
-        >
-          click
-        </button>
+        <div>
+          <button onClick={() => this.setState({ open: true })}>
+            Open modal
+          </button>
+          {this.props.counter.data}
+          <button onClick={() => this.props.increment()}>click</button>
+          <button
+            onClick={() =>
+              this.props.addExpense({
+                id: '1',
+                note: 'fsfsdfs',
+                description: 'dsadsadasdsa',
+                amount: 20,
+                createdAt: new Date().toISOString()
+              })
+            }
+          >
+            click
+          </button>
+        </div>
 
         <Counter message="simple message" />
         <Navigation />

@@ -1,5 +1,5 @@
 .link_container {
-  color: blue;
+  color: $off-white;
   padding-left: $sm-size;
 
   &:hover {
@@ -8,7 +8,7 @@
 
   &.active {
     font-weight: bold;
-    border-bottom: 1px solid blue;
+    border-bottom: 1px solid $off-white;
     padding-left: $sm-size;
   }
 }
