@@ -3,10 +3,11 @@
 const path = require('path')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const WorkboxWebpackPlugin = require('workbox-webpack-plugin')
-import webpack from 'webpack'
+import webpack, { HotModuleReplacementPlugin } from 'webpack'
 const isProduction = process.env.NODE_ENV == 'production'
 import 'webpack-dev-server'
 const stylesHandler = 'style-loader'
+const Dotenv = require('dotenv-webpack')
 
 const config: webpack.Configuration = {
   entry: './src/index.tsx',
@@ -16,11 +17,17 @@ const config: webpack.Configuration = {
   devServer: {
     open: true,
     host: 'localhost',
-    historyApiFallback: true
+    historyApiFallback: true,
+    port: 3000
   },
   plugins: [
     new HtmlWebpackPlugin({
       template: 'public/index.html'
+    }),
+    new HotModuleReplacementPlugin(),
+    new Dotenv({
+      path: './.env', // Path to .env file (this is the default)
+      safe: true // load .env.example (defaults to "false" which does not use dotenv-safe)
     })
 
     // Add your plugins here
