@@ -69,6 +69,12 @@ class Home extends Component<Props, State> {
   }
 
   render() {
+    if (process.env.NODE_ENV !== 'production') {
+      console.log(process.env.TEST)
+
+      console.log('Looks like we are in development mode!')
+    }
+
     return (
       <main className="pageContainer">
         <Header
