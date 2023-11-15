@@ -49,7 +49,7 @@ class Playground extends Component<Props, State> {
     this.state.unsubscribe()
   }
 
-  writeUserData() {
+  writeUserData = () => {
     const userRef = ref(this.state.db)
     push(userRef, {
       username: 'user test',
@@ -60,9 +60,10 @@ class Playground extends Component<Props, State> {
       .catch((error) => console.error(error))
   }
 
-  readUserData() {
+  readUserData = () => {
     // this is a subscribe
     const userRef = ref(this.state.db)
+
     onValue(
       userRef,
       (snapshot) => {
