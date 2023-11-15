@@ -3,7 +3,7 @@
 const path = require('path')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const WorkboxWebpackPlugin = require('workbox-webpack-plugin')
-import webpack from 'webpack'
+import webpack, { DefinePlugin } from 'webpack'
 const isProduction = process.env.NODE_ENV == 'production'
 import 'webpack-dev-server'
 const stylesHandler = 'style-loader'
@@ -20,9 +20,29 @@ const config: webpack.Configuration = {
   },
   plugins: [
     new HtmlWebpackPlugin({
-      template: 'public/index.html'
+      template: 'public/index.html',
+      favicon: 'public/images/favicon.png'
+    }),
+    new DefinePlugin({
+      'process.env.FIREBASE_API_KEY': JSON.stringify(
+        process.env.FIREBASE_API_KEY
+      ),
+      'process.env.FIREBASE_AUTH_DOMAIN': JSON.stringify(
+        process.env.FIREBASE_AUTH_DOMAIN
+      ),
+      'process.env.FIREBASE_DATABASE_URL': JSON.stringify(
+        process.env.FIREBASE_DATABASE_URL
+      ),
+      'process.env.FIREBASE_PROJECT_ID': JSON.stringify(
+        process.env.FIREBASE_PROJECT_ID
+      ),
+      'process.env.FIREBASE_STORAGE_BUCKET': JSON.stringify(
+        process.env.FIREBASE_STORAGE_BUCKET
+      ),
+      'process.env.FIREBASE_MESSAGING_SENDER_ID': JSON.stringify(
+        process.env.FIREBASE_MESSAGING_SENDER_ID
+      )
     })
-
     // Add your plugins here
     // Learn more about plugins from https://webpack.js.org/configuration/plugins/
   ],

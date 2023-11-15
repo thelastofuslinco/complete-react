@@ -11,17 +11,29 @@ import {
   store,
   addExpense
 } from '../../store'
+import {
+  ref,
+  getDatabase,
+  onValue,
+  push,
+  remove,
+  Database
+} from 'firebase/database'
+import { getAuth, signInWithEmailAndPassword } from 'firebase/auth'
+import app from '../../firebase'
 
 interface Props extends PropsFromRedux {}
 
 interface State {
   open: boolean
+  db: Database
   unsubscribe: Unsubscribe
 }
 
 class Playground extends Component<Props, State> {
   state = {
     open: false,
+    db: getDatabase(app),
     unsubscribe: store.subscribe(() => {
       console.log(store.getState())
     })
@@ -37,12 +49,58 @@ class Playground extends Component<Props, State> {
     this.state.unsubscribe()
   }
 
+  writeUserData() {
+    const userRef = ref(this.state.db)
+    push(userRef, {
+      username: 'user test',
+      email: 'email@mail.com',
+      girlfriend: 'Camila'
+    })
+      .then((response) => console.log('writeUserData', response))
+      .catch((error) => console.error(error))
+  }
+
+  readUserData() {
+    // this is a subscribe
+    const userRef = ref(this.state.db)
+    onValue(
+      userRef,
+      (snapshot) => {
+        const data = snapshot.val()
+        console.log('readUserData', data)
+      },
+      (error) => console.error(error)
+    )
+  }
+
+  signIn = () => {
+    const auth = getAuth(app)
+    signInWithEmailAndPassword(auth, 'lincoln@mail.com', '12345678')
+      .then((userCredential) => {
+        // Signed in
+        const user = userCredential.user
+        console.log('signIn', user)
+
+        // ...
+      })
+      .catch((error) => {
+        const errorCode = error.code
+        const errorMessage = error.message
+        console.error(error)
+      })
+  }
+
   render() {
     console.log(this)
 
     return (
       <div className="pageContainer">
         <div>
+          {/* Firebase buttons */}
+          <button onClick={this.signIn}>signIn</button>
+          <button onClick={this.writeUserData}>write data</button>
+          <button onClick={this.readUserData}>read data</button>
+          {/* Firebase buttons */}
           <button onClick={() => this.setState({ open: true })}>
             Open modal
           </button>
