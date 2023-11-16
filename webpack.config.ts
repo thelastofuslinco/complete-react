@@ -3,7 +3,7 @@
 const path = require('path')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const WorkboxWebpackPlugin = require('workbox-webpack-plugin')
-import webpack, { HotModuleReplacementPlugin } from 'webpack'
+import webpack from 'webpack'
 const isProduction = process.env.NODE_ENV == 'production'
 import 'webpack-dev-server'
 const stylesHandler = 'style-loader'
@@ -24,7 +24,6 @@ const config: webpack.Configuration = {
     new HtmlWebpackPlugin({
       template: 'public/index.html'
     }),
-    new HotModuleReplacementPlugin(),
     new Dotenv({
       path: './.env', // Path to .env file (this is the default)
       safe: true // load .env.example (defaults to "false" which does not use dotenv-safe)

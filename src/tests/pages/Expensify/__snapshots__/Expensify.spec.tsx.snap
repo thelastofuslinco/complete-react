@@ -4,99 +4,114 @@ exports[`Expensify page should render page 1`] = `
 <main
   class="pageContainer"
 >
-  <form
-    class="form"
+  <header
+    class="header_container"
   >
-    <input
-      class="input undefined"
-      name="description"
-      type="text"
-      value=""
-    />
-    <input
-      class="input undefined"
-      name="amount"
-      type="number"
-      value=""
-    />
-    <input
-      class="input undefined"
-      name="note"
-      value=""
-    />
-    <button
-      type="submit"
+    <h1>
+      Expensify app
+    </h1>
+    <span>
+      Put your expenses in the hands of a computer
+    </span>
+  </header>
+  <div>
+    <form
+      class="form"
     >
-      send
-    </button>
-  </form>
-  <form
-    data=""
-  >
-    <input
-      class="input undefined"
-      name="text"
-      value=""
-    />
-    <select
-      class="select undefined"
-      name="sort"
+      <input
+        class="input undefined"
+        name="description"
+        type="text"
+        value=""
+      />
+      <input
+        class="input undefined"
+        name="amount"
+        type="number"
+        value=""
+      />
+      <input
+        class="input undefined"
+        name="note"
+        value=""
+      />
+      <button
+        type="submit"
+      >
+        send
+      </button>
+    </form>
+    <form
+      data=""
     >
-      <option
-        value="amount asc"
+      <input
+        class="input undefined"
+        name="text"
+        value=""
+      />
+      <select
+        class="select undefined"
+        name="sort"
       >
-        amount asc
-      </option>
-      <option
-        value="amount desc"
-      >
-        amount desc
-      </option>
-      <option
-        value="description asc"
-      >
-        description asc
-      </option>
-      <option
-        value="description desc"
-      >
-        description desc
-      </option>
-      <option
-        value="createdAt asc"
-      >
-        createdAt asc
-      </option>
-      <option
-        value="createdAt desc"
-      >
-        createdAt desc
-      </option>
-    </select>
-    <div
-      class="react-datepicker-wrapper"
-    >
+        <option
+          value="amount asc"
+        >
+          amount asc
+        </option>
+        <option
+          value="amount desc"
+        >
+          amount desc
+        </option>
+        <option
+          value="description asc"
+        >
+          description asc
+        </option>
+        <option
+          value="description desc"
+        >
+          description desc
+        </option>
+        <option
+          value="createdAt asc"
+        >
+          createdAt asc
+        </option>
+        <option
+          value="createdAt desc"
+        >
+          createdAt desc
+        </option>
+      </select>
       <div
-        class="react-datepicker__input-container"
+        class="react-datepicker-wrapper"
       >
-        <input
-          class=""
-          name="date"
-          type="text"
-          value=""
-        />
+        <div
+          class="react-datepicker__input-container"
+        >
+          <input
+            class=""
+            name="date"
+            type="text"
+            value=""
+          />
+        </div>
       </div>
-    </div>
-    <button
-      type="submit"
-    >
-      send
-    </button>
-  </form>
-  <p>
-    total:
+      <button
+        type="submit"
+      >
+        send
+      </button>
+    </form>
+  </div>
+  <h3>
+    Viewing: 
     0
-  </p>
+     expenses totalling
+     
+    $0.00
+  </h3>
   <ul
     class="expenseList"
   >

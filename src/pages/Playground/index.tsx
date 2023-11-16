@@ -106,7 +106,11 @@ class Playground extends Component<Props, State> {
             Open modal
           </button>
           {this.props.counter.data}
-          <button onClick={() => this.props.increment()}>click</button>
+          {this.props.counter.loading && 'Loading...'}
+          <button onClick={() => this.props.increment()}>increment</button>
+          <button onClick={() => this.props.incrementByAmount(20)}>
+            incrementByAmount 20
+          </button>
           <button
             onClick={() =>
               this.props.addExpense({

@@ -2,7 +2,7 @@
 
 exports[`Home page should render page 1`] = `
 <main
-  class="pageContainer homeContainer"
+  class="pageContainer"
 >
   <header
     class="header_container"
