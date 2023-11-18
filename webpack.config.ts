@@ -24,10 +24,7 @@ const config: webpack.Configuration = {
     new HtmlWebpackPlugin({
       template: 'public/index.html'
     }),
-    new Dotenv({
-      path: './.env', // Path to .env file (this is the default)
-      safe: true // load .env.example (defaults to "false" which does not use dotenv-safe)
-    })
+    new Dotenv()
     // Add your plugins here
     // Learn more about plugins from https://webpack.js.org/configuration/plugins/
   ],

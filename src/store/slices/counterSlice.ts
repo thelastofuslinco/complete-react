@@ -20,7 +20,7 @@ const initialState: State = {
 
 export const increment = createAsyncThunk(
   'counter/increment',
-  async () => new Promise((resolve, reject) => setTimeout(resolve, 3000))
+  async () => new Promise((resolve) => setTimeout(resolve, 3000))
 )
 
 export const incrementByAmount = createAsyncThunk(
@@ -30,6 +30,15 @@ export const incrementByAmount = createAsyncThunk(
     return value
   }
 )
+
+const loadingFunction = (state) => {
+  state.loading = true
+}
+
+const errorFunction = (state, action) => {
+  state.loading = false
+  state.error = action.error
+}
 
 const counterSlice = createSlice({
   name: 'counter',
@@ -44,32 +53,18 @@ const counterSlice = createSlice({
       state.data = 0
     })
 
-    builder.addCase(increment.pending, (state) => {
-      state.loading = true
-    })
-
+    builder.addCase(increment.pending, loadingFunction)
+    builder.addCase(increment.rejected, errorFunction)
     builder.addCase(increment.fulfilled, (state) => {
       state.loading = false
       state.data += 1
     })
 
-    builder.addCase(increment.rejected, (state, action) => {
-      state.loading = false
-      state.error = action.error
-    })
-
-    builder.addCase(incrementByAmount.pending, (state) => {
-      state.loading = true
-    })
-
+    builder.addCase(incrementByAmount.pending, loadingFunction)
+    builder.addCase(incrementByAmount.rejected, errorFunction)
     builder.addCase(incrementByAmount.fulfilled, (state, action) => {
       state.loading = false
       state.data = action.payload
-    })
-
-    builder.addCase(incrementByAmount.rejected, (state, action) => {
-      state.loading = false
-      state.error = action.error
     })
   }
 })

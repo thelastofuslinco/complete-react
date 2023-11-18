@@ -21,11 +21,13 @@ import {
 } from 'firebase/database'
 import { getAuth, signInWithEmailAndPassword } from 'firebase/auth'
 import app from '../../firebase'
+import Pagination from '../../components/Pagination'
 
 interface Props extends PropsFromRedux {}
 
 interface State {
   open: boolean
+  page: number
   db: Database
   unsubscribe: Unsubscribe
 }
@@ -34,15 +36,10 @@ class Playground extends Component<Props, State> {
   state = {
     open: false,
     db: getDatabase(app),
+    page: 1,
     unsubscribe: store.subscribe(() => {
       console.log(store.getState())
     })
-  }
-
-  componentDidMount(): void {
-    this.props.increment()
-    this.props.increment()
-    this.props.incrementByAmount(10)
   }
 
   componentWillUnmount(): void {
@@ -92,11 +89,14 @@ class Playground extends Component<Props, State> {
   }
 
   render() {
-    console.log(this)
-
     return (
       <div className="pageContainer">
         <div>
+          <Pagination
+            pages={16}
+            page={this.state.page}
+            onClick={(value) => this.setState({ page: value })}
+          />
           {/* Firebase buttons */}
           <button onClick={this.signIn}>signIn</button>
           <button onClick={this.writeUserData}>write data</button>
