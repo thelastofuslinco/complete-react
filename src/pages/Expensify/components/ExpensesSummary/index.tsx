@@ -10,7 +10,6 @@ const ExpensesSummary = ({ expenses }: Props) => {
     currency: 'USD'
   })
 
-  console.log()
   return (
     <h3>
       Viewing: {expenses.length} expenses totalling{' '}

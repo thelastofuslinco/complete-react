@@ -49,8 +49,6 @@ const Pagination = ({ pages, page, onClick }: Props) => {
     }
   })
     .reduce((prev, curr) => {
-      console.log()
-
       if (
         prev[prev.length - 1] !== undefined &&
         curr === undefined &&
