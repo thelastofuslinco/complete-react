@@ -12,10 +12,13 @@ import expensesSlice, {
   removeExpense
 } from './slices/expensesSlice'
 
+import userSlice, { logIn, logOut } from './slices/userSlice'
+
 const store = configureStore({
   reducer: {
     counter: counterSlice,
-    expenses: expensesSlice
+    expenses: expensesSlice,
+    user: userSlice
   },
   devTools: true
 })
@@ -31,5 +34,7 @@ export {
   addExpense,
   filterExpenses,
   editExpense,
-  removeExpense
+  removeExpense,
+  logIn,
+  logOut
 }

@@ -1,57 +1,28 @@
 import { Component, ReactNode } from 'react'
-import {
-  getAuth,
-  signInWithEmailAndPassword,
-  signInWithPopup,
-  GoogleAuthProvider
-} from 'firebase/auth'
-import app from '../../firebase'
+import { ConnectedProps, connect } from 'react-redux'
+import { RootState, logIn } from '../../store'
+import { signInWithEmailAndPassword, signInWithPopup } from 'firebase/auth'
+import { auth, googleProvider } from '../../firebase'
 
-interface Props {}
+interface Props extends PropsFromRedux {}
 
 interface State {}
 
 class LoginPage extends Component<Props, State> {
-  signIn = () => {
-    const auth = getAuth(app)
-    signInWithEmailAndPassword(auth, 'lincoln@mail.com', '12345678')
-      .then((userCredential) => {
-        // Signed in
-        const user = userCredential.user
-        console.log('signIn', user)
-
-        // ...
-      })
-      .catch((error) => {
-        console.error(error)
-      })
+  signIn = async () => {
+    const { user } = await signInWithEmailAndPassword(
+      auth,
+      'lincoln@mail.com',
+      '12345678'
+    )
+    this.props.logIn(user)
   }
 
-  signInWhithGooggle = () => {
-    const auth = getAuth(app)
-    const provider = new GoogleAuthProvider()
-
-    signInWithPopup(auth, provider)
-      .then((result) => {
-        // This gives you a Google Access Token. You can use it to access the Google API.
-        const credential = GoogleAuthProvider.credentialFromResult(result)
-        const token = credential.accessToken
-        // The signed-in user info.
-        const user = result.user
-        // IdP data available using getAdditionalUserInfo(result)
-        // ...
-      })
-      .catch((error) => {
-        // Handle Errors here.
-        const errorCode = error.code
-        const errorMessage = error.message
-        // The email of the user's account used.
-        const email = error.customData.email
-        // The AuthCredential type that was used.
-        const credential = GoogleAuthProvider.credentialFromError(error)
-        // ...
-      })
+  signInWhithGooggle = async () => {
+    const { user } = await signInWithPopup(auth, googleProvider)
+    this.props.logIn(user)
   }
+
   render(): ReactNode {
     return (
       <div>
@@ -67,4 +38,10 @@ class LoginPage extends Component<Props, State> {
   }
 }
 
-export default LoginPage
+const conector = connect((state: RootState) => state.user, {
+  logIn
+})
+
+type PropsFromRedux = ConnectedProps<typeof conector>
+
+export default conector(LoginPage)

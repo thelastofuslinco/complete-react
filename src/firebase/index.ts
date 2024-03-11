@@ -1,5 +1,7 @@
 import { initializeApp } from 'firebase/app'
-console.log(process.env.AUTH_DOMAIN)
+import { Auth, GoogleAuthProvider, getAuth } from 'firebase/auth'
+import { Database, getDatabase } from 'firebase/database'
+import { getCookie, setCookie } from '../utils/cookies'
 
 const firebaseConfig = {
   apiKey: process.env.API_KEY,
@@ -11,6 +13,23 @@ const firebaseConfig = {
   appId: process.env.APP_ID
 }
 
-const app = initializeApp(firebaseConfig)
+const googleProvider = new GoogleAuthProvider()
 
-export default app
+let auth: Auth
+let database: Database
+
+const cookieAuth = getCookie('complete_react_auth')
+const cookieDatabase = getCookie('complete_react_database')
+
+if (!cookieAuth && !cookieDatabase) {
+  const app = initializeApp(firebaseConfig)
+  auth = getAuth(app)
+  database = getDatabase(app)
+  setCookie('complete_react_auth', JSON.stringify(auth), 30)
+  setCookie('complete_react_database', JSON.stringify(database), 30)
+} else {
+  auth = JSON.parse(cookieAuth)
+  database = JSON.parse(cookieDatabase)
+}
+
+export { auth, database, googleProvider }

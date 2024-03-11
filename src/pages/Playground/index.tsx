@@ -11,16 +11,8 @@ import {
   store,
   addExpense
 } from '../../store'
-import {
-  ref,
-  getDatabase,
-  onValue,
-  push,
-  Database,
-  get,
-  child
-} from 'firebase/database'
-import app from '../../firebase'
+import { ref, onValue, push, Database, get, child } from 'firebase/database'
+import { database } from '../../firebase'
 
 interface Props extends PropsFromRedux {}
 
@@ -34,7 +26,7 @@ interface State {
 class Playground extends Component<Props, State> {
   state = {
     open: false,
-    db: getDatabase(app),
+    db: database,
     page: 1,
     unsubscribe: store.subscribe(() => {
       console.log(store.getState())

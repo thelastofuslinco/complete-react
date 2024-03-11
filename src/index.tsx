@@ -7,6 +7,7 @@ import 'react-datepicker/dist/react-datepicker.css'
 import './styles/styles.scss'
 
 const root = createRoot(document.getElementById('root'))
+
 root.render(
   <Provider store={store}>
     <App />

@@ -14,8 +14,9 @@ class Route extends Component<Props> {
     const { navigationPath } = this.context
     const matchPath = navigationPath.includes(this.props.path)
     const everyPath = this.props.path.includes('*')
+    const condition = matchPath || everyPath
 
-    if (matchPath || everyPath) {
+    if (condition) {
       return (
         <Suspense fallback={<Loading className="loadingContainer" />}>
           {this.props.children}
