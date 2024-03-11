@@ -1,3 +1,4 @@
+import React from 'react'
 import { screen } from '@testing-library/react'
 import { renderWithProviders } from '../../../utils/test-utils'
 import Expensify from '../../../pages/Expensify'

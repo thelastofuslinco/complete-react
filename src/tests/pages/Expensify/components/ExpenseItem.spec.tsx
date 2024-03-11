@@ -1,3 +1,4 @@
+import React from 'react'
 import { fireEvent, render, screen } from '@testing-library/react'
 import { expenses } from '../../../fixtures/expenses'
 import ExpenseItem from '../../../../pages/Expensify/components/ExpenseItem'

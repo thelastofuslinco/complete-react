@@ -16,12 +16,11 @@ import {
   getDatabase,
   onValue,
   push,
-  remove,
-  Database
+  Database,
+  get,
+  child
 } from 'firebase/database'
-import { getAuth, signInWithEmailAndPassword } from 'firebase/auth'
 import app from '../../firebase'
-import Pagination from '../../components/Pagination'
 
 interface Props extends PropsFromRedux {}
 
@@ -47,8 +46,8 @@ class Playground extends Component<Props, State> {
   }
 
   writeUserData = () => {
-    const userRef = ref(this.state.db)
-    push(userRef, {
+    const dbRef = ref(this.state.db)
+    push(dbRef, {
       username: 'user test',
       email: 'email@mail.com',
       girlfriend: 'Camila'
@@ -57,7 +56,7 @@ class Playground extends Component<Props, State> {
       .catch((error) => console.error(error))
   }
 
-  readUserData = () => {
+  subscribeFirebase = () => {
     // this is a subscribe
     const userRef = ref(this.state.db)
 
@@ -71,19 +70,18 @@ class Playground extends Component<Props, State> {
     )
   }
 
-  signIn = () => {
-    const auth = getAuth(app)
-    signInWithEmailAndPassword(auth, 'lincoln@mail.com', '12345678')
-      .then((userCredential) => {
-        // Signed in
-        const user = userCredential.user
-        console.log('signIn', user)
+  readUserData = () => {
+    const dbRef = ref(this.state.db)
 
-        // ...
+    get(child(dbRef, '/'))
+      .then((snapshot) => {
+        if (snapshot.exists()) {
+          console.log(snapshot.val())
+        } else {
+          console.log('No data available')
+        }
       })
       .catch((error) => {
-        const errorCode = error.code
-        const errorMessage = error.message
         console.error(error)
       })
   }
@@ -92,38 +90,43 @@ class Playground extends Component<Props, State> {
     return (
       <div className="pageContainer">
         <div>
-          <Pagination
-            pages={16}
-            page={this.state.page}
-            onClick={(value) => this.setState({ page: value })}
-          />
-          {/* Firebase buttons */}
-          <button onClick={this.signIn}>signIn</button>
-          <button onClick={this.writeUserData}>write data</button>
-          <button onClick={this.readUserData}>read data</button>
-          {/* Firebase buttons */}
+          <div>
+            <p>Firebase buttons</p>
+            {/* Firebase buttons */}
+            <button onClick={this.writeUserData}>write data in firebase</button>
+            <button onClick={this.readUserData}>read data in firebase</button>
+            <button onClick={this.subscribeFirebase}>
+              subscribe in firebase
+            </button>
+            {/* Firebase buttons */}
+          </div>
           <button onClick={() => this.setState({ open: true })}>
             Open modal
           </button>
-          {this.props.counter.data}
-          {this.props.counter.loading && 'Loading...'}
-          <button onClick={() => this.props.increment()}>increment</button>
-          <button onClick={() => this.props.incrementByAmount(20)}>
-            incrementByAmount 20
-          </button>
-          <button
-            onClick={() =>
-              this.props.addExpense({
-                id: '1',
-                note: 'fsfsdfs',
-                description: 'dsadsadasdsa',
-                amount: 20,
-                createdAt: new Date().toISOString()
-              })
-            }
-          >
-            click
-          </button>
+
+          <div>
+            <p>Redux actions</p>
+            {this.props.counter.data}
+            {this.props.counter.loading && 'Loading...'}
+            {/* Redux actions */}
+            <button onClick={() => this.props.increment()}>increment</button>
+            <button onClick={() => this.props.incrementByAmount(20)}>
+              incrementByAmount 20
+            </button>
+            <button
+              onClick={() =>
+                this.props.addExpense({
+                  id: '1',
+                  note: 'fsfsdfs',
+                  description: 'dsadsadasdsa',
+                  amount: 20,
+                  createdAt: new Date().toISOString()
+                })
+              }
+            >
+              click
+            </button>
+          </div>
         </div>
 
         <Counter message="simple message" />

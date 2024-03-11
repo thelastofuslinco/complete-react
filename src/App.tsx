@@ -3,6 +3,7 @@ import Route from './components/Route'
 import Sidebar from './components/Sidebar'
 import Switch from './components/Switch'
 import NavigationProvider from './context/navigation'
+import LoginPage from './pages/LoginPage'
 
 const Playground = lazy(() => import('./pages/Playground'))
 const Home = lazy(() => import('./pages/Home'))
@@ -10,6 +11,7 @@ const Expensify = lazy(() => import('./pages/Expensify'))
 const NotFound = lazy(() => import('./pages/NotFound'))
 
 const links = [
+  { label: 'login', to: '/login' },
   { label: 'home', to: '/' },
   { label: 'expensify', to: '/expensify' },
   { label: 'playground', to: '/playground' }
@@ -20,6 +22,9 @@ const App = () => {
     <NavigationProvider>
       <Sidebar links={links} />
       <Switch>
+        <Route path="/login">
+          <LoginPage />
+        </Route>
         <Route path="/">
           <Home />
         </Route>

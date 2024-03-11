@@ -1,7 +1,6 @@
 import {
   createAsyncThunk,
   createSlice,
-  PayloadAction,
   SerializedError
 } from '@reduxjs/toolkit'
 import { reset } from '../actions'

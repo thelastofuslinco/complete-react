@@ -1,3 +1,4 @@
+import React from 'react'
 import { screen } from '@testing-library/react'
 import FilterForm from '../../../../pages/Expensify/components/FilterForm'
 import { renderWithProviders } from '../../../../utils/test-utils'
