@@ -2,7 +2,7 @@ import { PayloadAction, createSlice } from '@reduxjs/toolkit'
 import { User } from 'firebase/auth'
 
 interface State {
-  user: User
+  user: Partial<User>
 }
 
 const initialState: State = {
@@ -13,8 +13,8 @@ const userSlice = createSlice({
   name: 'user',
   initialState,
   reducers: {
-    logIn: (state, action: PayloadAction<User>) => {
-      state.user = action.payload
+    logIn: (state, action: PayloadAction<Partial<User>>) => {
+      state.user = { uid: action.payload.uid }
     },
     logOut: (state) => {
       state.user = null

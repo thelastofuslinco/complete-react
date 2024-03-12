@@ -1,4 +1,4 @@
-import { lazy, useEffect } from 'react'
+import { lazy, useEffect, useId } from 'react'
 import Sidebar from './components/Sidebar'
 import Switch from './components/Switch'
 import NavigationProvider from './context/navigation'
@@ -26,7 +26,7 @@ const App = (props: PropsFromRedux) => {
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (user) => {
       if (user) {
-        props.logIn(user)
+        props.logIn({ uid: user.uid })
         localStorage.setItem('userData', JSON.stringify(user))
       } else {
         localStorage.removeItem('userData')

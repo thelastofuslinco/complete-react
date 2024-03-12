@@ -15,13 +15,13 @@ class LoginPage extends Component<Props, State> {
       'lincoln@mail.com',
       '12345678'
     )
-    this.props.logIn(user)
+    this.props.logIn({ uid: user.uid })
     localStorage.setItem('userData', JSON.stringify(user))
   }
 
   signInWhithGooggle = async () => {
     const { user } = await signInWithPopup(auth, googleProvider)
-    this.props.logIn(user)
+    this.props.logIn({ uid: user.uid })
     localStorage.setItem('userData', JSON.stringify(user))
   }
 
