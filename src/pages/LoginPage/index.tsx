@@ -16,11 +16,13 @@ class LoginPage extends Component<Props, State> {
       '12345678'
     )
     this.props.logIn(user)
+    localStorage.setItem('userData', JSON.stringify(user))
   }
 
   signInWhithGooggle = async () => {
     const { user } = await signInWithPopup(auth, googleProvider)
     this.props.logIn(user)
+    localStorage.setItem('userData', JSON.stringify(user))
   }
 
   render(): ReactNode {

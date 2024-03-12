@@ -1,5 +1,4 @@
 import { lazy, useEffect } from 'react'
-import Route from './components/Route'
 import Sidebar from './components/Sidebar'
 import Switch from './components/Switch'
 import NavigationProvider from './context/navigation'
@@ -9,6 +8,7 @@ import { ConnectedProps, connect } from 'react-redux'
 import { RootState, logIn, logOut } from './store'
 import { auth } from './firebase'
 import { onAuthStateChanged, signOut } from 'firebase/auth'
+import PublicRoute from './components/PublicRoute'
 
 const Playground = lazy(() => import('./pages/Playground'))
 const Home = lazy(() => import('./pages/Home'))
@@ -24,11 +24,13 @@ const links = [
 
 const App = (props: PropsFromRedux) => {
   useEffect(() => {
-    const unsubscribe = onAuthStateChanged(auth, async (user) => {
+    const unsubscribe = onAuthStateChanged(auth, (user) => {
       if (user) {
         props.logIn(user)
+        localStorage.setItem('userData', JSON.stringify(user))
       } else {
-        await signOut(auth)
+        localStorage.removeItem('userData')
+        signOut(auth)
         props.logOut()
       }
     })
@@ -40,9 +42,9 @@ const App = (props: PropsFromRedux) => {
     <NavigationProvider>
       <Sidebar links={links} />
       <Switch>
-        <Route path="/">
+        <PublicRoute path="/">
           <LoginPage />
-        </Route>
+        </PublicRoute>
         <PrivateRoute path="/home">
           <Home />
         </PrivateRoute>

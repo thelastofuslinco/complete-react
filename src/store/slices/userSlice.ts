@@ -6,7 +6,7 @@ interface State {
 }
 
 const initialState: State = {
-  user: null
+  user: JSON.parse(localStorage.getItem('userData')) || null
 }
 
 const userSlice = createSlice({
