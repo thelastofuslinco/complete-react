@@ -28,7 +28,7 @@ const FilterForm = ({ filters, filterExpenses, ...props }: Props) => {
   }
 
   return (
-    <form onSubmit={handleSubmit} {...props}>
+    <form className="filterExpenses" onSubmit={handleSubmit} {...props}>
       <Input name="text" value={filters.text} />
       <Select name="sort" value={filters.sortBy}>
         <option value="amount asc">amount asc</option>

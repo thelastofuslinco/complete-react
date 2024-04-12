@@ -29,24 +29,6 @@
   }
 
   button {
-    padding: $sm-size $m-size;
-    font-size: $m-size;
-    background-color: $purple;
-    border: none;
     border-radius: 0 0.5rem 0.5rem 0;
-    box-shadow: 0 2px darken($color: $purple, $amount: 10);
-    font-weight: bold;
-    color: #ffffff;
-
-    &:not(:disabled) {
-      &:hover {
-        background-color: darken($color: $purple, $amount: 2);
-      }
-
-      &:active {
-        box-shadow: 0 1px darken($color: $purple, $amount: 20);
-        transform: translateY(1px);
-      }
-    }
   }
 }

@@ -53,10 +53,25 @@ const ExpenseForm = ({
   }
 
   return (
-    <form onSubmit={handleSubmit} className="form" {...props}>
-      <Input name="description" type="text" value={description} />
-      <Input name="amount" type="number" value={amount} />
-      <Input name="note" value={note} />
+    <form onSubmit={handleSubmit} className="formExpenses" {...props}>
+      <h1>Expense form</h1>
+      <label htmlFor="description_id">
+        description
+        <Input
+          id="description_id"
+          name="description"
+          type="text"
+          value={description}
+        />
+      </label>
+      <label htmlFor="amount_id">
+        amount
+        <Input id="amount_id" name="amount" type="number" value={amount} />
+      </label>
+      <label htmlFor="note_id">
+        note
+        <Input id="note_id" name="note" value={note} />
+      </label>
       <button type="submit">send</button>
     </form>
   )

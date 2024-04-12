@@ -1,0 +1,14 @@
+.loginBox {
+  margin: auto;
+  background-color: $off-white;
+  padding: $l-size;
+  border-radius: $sm-size;
+  display: flex;
+  flex-direction: column;
+  gap: $m-size;
+
+  .loginButtons {
+    display: flex;
+    gap: $m-size;
+  }
+}

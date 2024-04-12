@@ -2,15 +2,45 @@
   display: flex;
   flex-direction: column;
   gap: $sm-size;
-  padding: 0 $m-size;
   overflow: auto;
+  margin-bottom: 1rem;
 }
 
 .expenseContainer {
   display: flex;
   flex-direction: column;
   gap: $sm-size;
-  padding: $sm-size $m-size;
   background-color: $grey;
-  border-radius: $sm-size;
+  border-radius: 0.5rem;
+  padding: 1rem;
+}
+
+.formExpenses {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  width: 100%;
+  max-width: 600px;
+  margin: 0 auto;
+
+  @media (width: 1024px) {
+    gap: 1rem;
+
+    label {
+      flex-direction: row;
+      font-size: 24px;
+    }
+  }
+}
+
+.filterExpenses {
+  display: none;
+  gap: 1rem;
+  width: 100%;
+  max-width: 600px;
+  margin: 0 auto;
+
+  @media (width: 1024px) {
+    display: flex;
+  }
 }

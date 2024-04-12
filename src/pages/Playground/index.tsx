@@ -38,11 +38,11 @@ class Playground extends Component<Props, State> {
   }
 
   writeUserData = () => {
-    const dbRef = ref(this.state.db)
-    push(dbRef, {
-      username: 'user test',
-      email: 'email@mail.com',
-      girlfriend: 'Camila'
+    push(ref(this.state.db, `/users/${this.props.user.uid}`), {
+      description: 'any_description',
+      note: 'any_note',
+      createdAt: new Date(Date.now()).toISOString(),
+      amount: 822
     })
       .then((response) => console.log('writeUserData', response))
       .catch((error) => console.error(error))
@@ -65,7 +65,7 @@ class Playground extends Component<Props, State> {
   readUserData = () => {
     const dbRef = ref(this.state.db)
 
-    get(child(dbRef, '/'))
+    get(child(dbRef, `/users/${this.props.user.uid}`))
       .then((snapshot) => {
         if (snapshot.exists()) {
           console.log(snapshot.val())
@@ -159,11 +159,14 @@ class Playground extends Component<Props, State> {
   }
 }
 
-const connector = connect((state: RootState) => ({ counter: state.counter }), {
-  increment,
-  incrementByAmount,
-  addExpense
-})
+const connector = connect(
+  (state: RootState) => ({ counter: state.counter, user: state.user.user }),
+  {
+    increment,
+    incrementByAmount,
+    addExpense
+  }
+)
 
 type PropsFromRedux = ConnectedProps<typeof connector>
 

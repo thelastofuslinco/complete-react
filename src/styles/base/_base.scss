@@ -18,6 +18,8 @@
 
 body {
   font-family: Helvetica, Arial, sans-serif;
+  font-weight: 400;
+  font-size: 1rem;
   background-color: $dark-blue;
 }
 
@@ -31,8 +33,53 @@ button {
 }
 
 .pageContainer {
+  width: 100vw;
+  height: 100vh;
+  position: absolute;
+  margin: 0 auto;
   display: flex;
   flex-direction: column;
-  height: 100vh;
-  gap: $l-size;
+
+  > * {
+    margin: 0 1rem;
+  }
+}
+
+button {
+  padding: $sm-size $m-size;
+  font-size: $m-size;
+  background-color: $purple;
+  border: none;
+  border-radius: 0.5rem;
+  box-shadow: 0 2px darken($color: $purple, $amount: 10);
+  font-weight: bold;
+  color: #ffffff;
+
+  &:not(:disabled) {
+    &:hover {
+      background-color: darken($color: $purple, $amount: 2);
+    }
+
+    &:active {
+      box-shadow: 0 1px darken($color: $purple, $amount: 20);
+      transform: translateY(1px);
+    }
+  }
+}
+
+label {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  font-weight: 700;
+  font-size: 1rem;
+  gap: 0.5rem;
+}
+
+input {
+  padding: 0.5rem 1rem;
+  font-size: 1rem;
+  border-radius: 0.5rem;
+  outline: none;
+  box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.25);
 }

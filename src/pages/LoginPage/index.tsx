@@ -27,15 +27,17 @@ class LoginPage extends Component<Props, State> {
 
   render(): ReactNode {
     return (
-      <div>
-        Login Page
-        <div>
-          <button onClick={this.signIn}>signIn in firebase</button>
-          <button onClick={this.signInWhithGooggle}>
-            signIn Whith Googgle
-          </button>
+      <main className="pageContainer">
+        <div className="loginBox">
+          Login Page
+          <div className="loginButtons">
+            <button onClick={this.signIn}>signIn in firebase</button>
+            <button onClick={this.signInWhithGooggle}>
+              signIn Whith Googgle
+            </button>
+          </div>
         </div>
-      </div>
+      </main>
     )
   }
 }
